@@ -1,8 +1,24 @@
 ---
-import { Welcome } from 'astro:components';
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import {buildImageUrl} from '../lib/directus';
+
+const [home] = await getCollection('home');
+const customers = await getCollection('customer');
 ---
 
 <Layout>
-	<Welcome title="Welcome to Astro" />
+	<ul>
+		{customers.map(c => (
+			<li><Image src={buildImageUrl(c.data.logo)} alt={c.data.name} inferSize={true}
+					    /> {c.data.name}</li>
+		))}
+	</ul>
+	<pre>
+		{JSON.stringify(home, null, 2)}
+	</pre>
+	<pre>
+		{JSON.stringify(customers, null, 2)}
+	</pre>
 </Layout>

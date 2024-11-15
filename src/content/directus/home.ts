@@ -8,6 +8,7 @@ export const homeCollection = defineCollection({
     async loader() {
         const page = await directus.request<PageHome>(readSingleton('page_home', defaultQuery));
         const translation = page.translations[0];
+        console.log('loaded home')
         return [{
             ...translation,
             id: 'home',

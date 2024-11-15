@@ -1,0 +1,58 @@
+---
+import { Menu, X, MoonStar, Sun, CalendarFold } from 'lucide-astro'
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.svg';
+
+const buttonCn = "font-medium text-gray-800 rounded-full hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+---
+<div class="bg-background/80 dark:bg-background/50 sticky top-0 z-10 w-full">
+<header class="container flex flex-wrap sm:justify-start sm:flex-nowrap w-full text-sm py-3 dark:bg-neutral-800">
+    <nav class="w-full mx-auto flex flex-wrap basis-full items-center justify-between">
+        <a class="sm:order-1 flex-none text-xl font-semibold dark:text-white focus:outline-none focus:opacity-80" href="/" aria-label="Home">
+            <Image
+                    alt={"Rocketbase Logo"}
+                    src={logo}
+                    class="dark:invert h-10 w-auto"
+            />
+        </a>
+        <div class="sm:order-3 flex items-center gap-x-2">
+            <button type="button"
+                    class="sm:hidden hs-collapse-toggle relative size-7 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+                    id="hs-navbar-alignment-collapse" aria-expanded="false" aria-controls="hs-navbar-alignment"
+                    aria-label="Toggle navigation" data-hs-collapse="#hs-navbar-alignment">
+                <Menu class="hs-collapse-open:hidden shrink-0 size-4"/>
+                <X class="hs-collapse-open:block hidden shrink-0 size-4"/>
+                <span class="sr-only">Toggle</span>
+            </button>
+            <div class="hidden sm:flex gap-x-2">
+            <button type="button"
+                    class={`hs-dark-mode-active:hidden block hs-dark-mode ${buttonCn}`}
+                    data-hs-theme-click-value="dark">
+              <span class="group inline-flex shrink-0 justify-center items-center size-9">
+                <MoonStar class="shrink-0 size-4"/>
+              </span>
+            </button>
+            <button type="button"
+                    class={`hs-dark-mode-active:block hidden hs-dark-mode font-medium ${buttonCn}`}
+                    data-hs-theme-click-value="light">
+              <span class="group inline-flex shrink-0 justify-center items-center size-9">
+                <Sun class="shrink-0 size-4"/>
+              </span>
+            </button>
+            <button type="button"
+                    class={`py-2 px-3 items-center gap-x-2 inline-flex rounded-full xl:rounded-lg xl:border hs-dark-mode ${buttonCn}`}>
+                <CalendarFold class="size-4" /> <span class="xl:inline hidden">Buche einen Termin</span>
+            </button>
+            </div>
+        </div>
+        <div id="hs-navbar-alignment" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:grow-0 sm:basis-auto sm:block sm:order-2" aria-labelledby="hs-navbar-alignment-collapse">
+            <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:mt-0 sm:ps-5">
+                <a class="font-medium text-blue-500 focus:outline-none" href="#" aria-current="page">Landing</a>
+                <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500" href="#">Account</a>
+                <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500" href="#">Work</a>
+                <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500" href="#">Blog</a>
+            </div>
+        </div>
+    </nav>
+</header>
+</div>

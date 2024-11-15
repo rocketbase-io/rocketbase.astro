@@ -12,6 +12,7 @@ export const customerCollection = defineCollection({
             },
             sort: ['sort', 'id'],
             fields: ["*.*"]} as any));
+        console.log('loaded customers')
         return customers.map(c => ({
             ...c,
             id: `${c.id}`

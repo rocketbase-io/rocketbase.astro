@@ -4,24 +4,17 @@ import {defineConfig, envField} from 'astro/config';
 
 import tailwind from "@astrojs/tailwind";
 
+import mdx from "@astrojs/mdx";
+
 // https://astro.build/config
 export default defineConfig({
-    env: {
-        schema: {
-            DIRECTUS_URL: envField.string({
-                access: "secret",
-                context: "server",
-            }),
-            DIRECTUS_API_KEY: envField.string({
-                access: "secret",
-                context: "server",
-            }),
-        }
-    },
+    experimental: { contentLayer: true },
 
     image: {
         domains: ["rcktbs-website-directus.fly.dev"],
     },
 
-    integrations: [tailwind()]
+    integrations: [tailwind({
+        applyBaseStyles: false,
+    }), mdx()]
 });

@@ -11,6 +11,10 @@ import './style.css'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
+		<script>
+			const preline = await import('preline/dist/preline.js')
+			preline.HSStaticMethods.autoInit()
+		</script>
 		<style is:global>
 			@font-face {
 				font-family: 'Mohr Alt';
@@ -39,5 +43,3 @@ import './style.css'
 		</div>
 	</body>
 </html>
-
-<script is:inline src="../../../node_modules/preline/dist/preline.js"></script>

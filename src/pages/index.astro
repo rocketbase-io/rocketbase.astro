@@ -4,10 +4,13 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import {buildImageUrl} from '../lib/directus';
 import Carousel from '../components/Carousel.astro';
+import Code from '../components/Code.astro';
 
 const [home] = await getCollection('home');
 const customers = await getCollection('customer');
 const references = await getCollection('reference');
+const examples = await getCollection('example');
+const testimonials = await getCollection('testimonial');
 ---
 
 <Layout>
@@ -20,16 +23,24 @@ const references = await getCollection('reference');
 					    /> {c.data.name}</li>
 		))}
 	</ul>
-	<h2>home</h2>
-	<pre>
+	<Code title="Home">
 		{JSON.stringify(home, null, 2)}
-	</pre>
-	<h2>reference</h2>
-	<pre>
+	</Code>
+
+	<Code title="references">
 		{JSON.stringify(references, null, 2)}
-	</pre>
-	<pre>
+	</Code>
+
+	<Code title="customers">
 		{JSON.stringify(customers, null, 2)}
-	</pre>
+	</Code>
+
+	<Code title="testimonials">
+		{JSON.stringify(testimonials, null, 2)}
+	</Code>
+
+	<Code title="examples">
+		{JSON.stringify(examples, null, 2)}
+	</Code>
 
 </Layout>

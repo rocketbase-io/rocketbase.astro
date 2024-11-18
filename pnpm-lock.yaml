@@ -32,6 +32,9 @@ importers:
       preline:
         specifier: ^2.5.1
         version: 2.5.1
+      remeda:
+        specifier: ^2.17.3
+        version: 2.17.3
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -1814,6 +1817,9 @@ packages:
   remark-stringify@11.0.0:
     resolution: {integrity: sha512-1OSmLd3awB/t8qdoEOMazZkNsfVTeY4fTsgzcQFdXNq8ToTN4ZGwrMnlda4K6smTFKD+GRV6O48i6Z4iKgPPpw==}
 
+  remeda@2.17.3:
+    resolution: {integrity: sha512-xyi2rCQkz2j4BEWbWxPw6JCapv1yBuSwr4Uf9BX00AkesAJaiKvc6Il6thsBidwVZAtNiSaCIXvslkKL0ybz8w==}
+
   request-light@0.5.8:
     resolution: {integrity: sha512-3Zjgh+8b5fhRJBQZoy+zbVKpAQGLyka0MPgW3zruTF4dFFJ8Fqcfu9YsAvi/rvdcaTeWG3MkbZv4WKxAn/84Lg==}
 
@@ -2015,6 +2021,10 @@ packages:
 
   type-fest@4.26.1:
     resolution: {integrity: sha512-yOGpmOAL7CkKe/91I5O3gPICmJNLJ1G4zFYVAsRHg7M64biSnPtRj0WNQt++bRkjYOqjWXrhnUw1utzmVErAdg==}
+    engines: {node: '>=16'}
+
+  type-fest@4.27.0:
+    resolution: {integrity: sha512-3IMSWgP7C5KSQqmo1wjhKrwsvXAtF33jO3QY+Uy++ia7hqvgSK6iXbbg5PbDBc1P2ZbNEDgejOrN4YooXvhwCw==}
     engines: {node: '>=16'}
 
   typesafe-path@0.2.2:
@@ -4537,6 +4547,10 @@ snapshots:
       mdast-util-to-markdown: 2.1.2
       unified: 11.0.5
 
+  remeda@2.17.3:
+    dependencies:
+      type-fest: 4.27.0
+
   request-light@0.5.8: {}
 
   request-light@0.7.0: {}
@@ -4797,6 +4811,8 @@ snapshots:
     optional: true
 
   type-fest@4.26.1: {}
+
+  type-fest@4.27.0: {}
 
   typesafe-path@0.2.2: {}
 

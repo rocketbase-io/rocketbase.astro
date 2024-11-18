@@ -4,6 +4,14 @@ import type {Customers} from "../../lib/directus-types";
 import {readItems} from "@directus/sdk";
 import {directusFileSchema} from "../shared.ts";
 
+export const customersSchema =  z.object({
+        logo: directusFileSchema,
+        name: z.string(),
+        sort: z.number().nullable(),
+        status: z.string(),
+        url: z.string().optional()
+    });
+
 export const customerCollection = defineCollection({
     async loader() {
         const customers = await directus.request<Customers[]>(readItems('customers', {
@@ -18,11 +26,5 @@ export const customerCollection = defineCollection({
             id: `${c.id}`
         }));
     },
-    schema: z.object({
-        logo: directusFileSchema,
-        name: z.string(),
-        sort: z.number().nullable(),
-        status: z.string(),
-        url: z.string().optional()
-    }),
+    schema: customersSchema,
 });

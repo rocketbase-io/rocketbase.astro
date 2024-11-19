@@ -1,0 +1,44 @@
+
+---
+import {marked} from "marked";
+import {getCollection} from "astro:content";
+import {ArrowLeft, ArrowRight} from "lucide-astro"
+import {Image} from 'astro:assets';
+
+
+const {title, message, image} = Astro.props;
+
+const content = message ? marked.parse(message) : undefined;
+---
+
+<div class="relative h-fit overflow-hidden">
+    <div class="relative inset-0 -z-10">
+        <Image src={image} alt={image} inferSize width={2560} height={1200} />
+        <div class="header-gradient absolute inset-0 h-full w-full backdrop-blur-sm"></div>
+    </div>
+    {(title || content) && (
+
+            <div class="container absolute top-0 left-0 right-0 flex h-full flex-col items-center justify-center gap-8 text-center text-white">
+                <h1 class="font-sans text-md md:text-4xl font-semibold tracking-tighter sm:text-6xl lg:max-w-5xl lg:text-7xl xl:text-[5.125rem]">
+                    {title}
+                </h1>
+                <div class="max-w-4xl text-lg font-normal leading-8 text-white">
+                    <article set:html={content}/>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background text-secondary-foreground shadow-sm hover:bg-accent hover:text-accent-foreground h-10 rounded-md mt-4 px-4 sm:px-6">
+                        Kontakt aufnehmen
+                    </button>
+                    <a class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 rounded-md mt-4 px-4 sm:px-6"
+                       href="/de/referenzen">Mehr erfahren
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="lucide lucide-arrow-right ml-2 h-4 w-4">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+    )}
+</div>

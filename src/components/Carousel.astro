@@ -1,72 +1,77 @@
 ---
+import {Image} from 'astro:assets';
+import {getCollection} from "astro:content";
 import {ArrowLeft, ArrowRight} from "lucide-astro"
+import {buildImageUrl} from "../lib/directus";
+import SectionWrapper from "./SectionWrapper.astro";
+
+
+
+const {title, small} = Astro.props;
+const customers = await getCollection('customer');
 ---
 
-<!-- Slider -->
-<div data-hs-carousel='{
-  "loadingClasses": "opacity-0",
-  "dotsItemClasses": "hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer dark:border-neutral-600 dark:hs-carousel-active:bg-blue-500 dark:hs-carousel-active:border-blue-500",
-  "slidesQty": {
-    "xs": 1,
-    "lg": 3
-  },
-  "currentIndex": 1,
-  "isCentered": true,
-  "isAutoPlay": true,
-  "speed": 2000,
-  "isDraggable": true,
-  "isInfiniteLoop": true
-}' class="relative">
-    <div class="hs-carousel w-full overflow-hidden bg-white rounded-lg">
-        <div class="relative min-h-72 -mx-1">
-            <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing">
-                <div class="hs-carousel-slide px-1">
-                    <div class="flex justify-center h-full bg-gray-100 p-6 dark:bg-neutral-900">
-                        <span class="self-center text-sm text-gray-800 transition duration-700 dark:text-white">First slide</span>
+<SectionWrapper>
+    {
+        title && (
+                    <div class="container mx-auto mb bg-background px-6 lg:px-8">
+                        <div class="mx-auto text-center">
+                            {title && (
+                                    <p class="sm:text-2xl sm:leading-normal lg:text-4xl font-bold leading-normal tracking-tight ">
+                                        {title}
+                                    </p>
+                            )}
+                        </div>
                     </div>
-                </div>
-                <div class="hs-carousel-slide px-1">
-                    <div class="flex justify-center h-full bg-gray-200 p-6 dark:bg-neutral-800">
-                        <span class="self-center text-sm text-gray-800 transition duration-700 dark:text-white">Second slide</span>
-                    </div>
-                </div>
-                <div class="hs-carousel-slide px-1">
-                    <div class="flex justify-center h-full bg-gray-300 p-6 dark:bg-neutral-700">
-                        <span class="self-center text-sm text-gray-800 transition duration-700 dark:text-white">Third slide</span>
-                    </div>
-                </div>
-                <div class="hs-carousel-slide px-1">
-                    <div class="flex justify-center h-full bg-gray-100 p-6 dark:bg-neutral-900">
-                        <span class="self-center text-sm text-gray-800 transition duration-700 dark:text-white">Fourth slide</span>
-                    </div>
-                </div>
-                <div class="hs-carousel-slide px-1">
-                    <div class="flex justify-center h-full bg-gray-200 p-6 dark:bg-neutral-800">
-                        <span class="self-center text-sm text-gray-800 transition duration-700 dark:text-white">Fifth slide</span>
-                    </div>
-                </div>
-                <div class="hs-carousel-slide px-1">
-                    <div class="flex justify-center h-full bg-gray-300 p-6 dark:bg-neutral-700">
-                        <span class="self-center text-sm text-gray-800 transition duration-700 dark:text-white">Sixth slide</span>
-                    </div>
+        )
+    }
+    <!-- Slider -->
+    <div data-hs-carousel='{
+          "loadingClasses": "opacity-0",
+          "slidesQty": {
+            "xs": 1,
+            "lg": 3
+          },
+          "infinite": true,
+          "currentIndex": 1,
+          "isCentered": true,
+          "isAutoPlay": true,
+          "speed": 2000,
+          "isDraggable": false,
+          "isInfiniteLoop": true,
+          "showDots": false
+        }' class="relative">
+        <div class="hs-carousel w-full overflow-hidden rounded-lg">
+            <div class="relative h-64 -mx-1">
+                <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex items-center flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing">
+                    {customers.map(c => {
+                        return (
+                                <div class="flex justify-center items-center hs-carousel-slide px-1 h-12 w-24 object-contain hover:grayscale-0 dark:brightness-0 dark:invert dark:hover:grayscale">
+                                    <Image src={buildImageUrl(c.data.logo)} alt={c.data.name} inferSize width={200} height={100}/>
+                                </div>
+                        )
+                    })}
                 </div>
             </div>
         </div>
+
+        <!--<button type="button"-->
+        <!--        class="hs-carousel-prev hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-s-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">-->
+        <!--<span class="text-2xl" aria-hidden="true">-->
+        <!--    <ArrowLeft class="shrink-0 size-5"/>-->
+        <!--</span>-->
+        <!--    <span class="sr-only">Previous</span>-->
+        <!--</button>-->
+        <!--<button type="button"-->
+        <!--        class="hs-carousel-next hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-e-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">-->
+        <!--    <span class="sr-only">Next</span>-->
+        <!--    <span class="text-2xl" aria-hidden="true">-->
+        <!--    <ArrowRight class="shrink-0 size-5"/>-->
+        <!--</span>-->
+        <!--</button>-->
+
+        <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2"></div>
     </div>
+    <!-- End Slider -->
+</SectionWrapper>
 
-    <button type="button" class="hs-carousel-prev hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-s-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
-    <span class="text-2xl" aria-hidden="true">
-        <ArrowLeft class="shrink-0 size-5" />
-    </span>
-        <span class="sr-only">Previous</span>
-    </button>
-    <button type="button" class="hs-carousel-next hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-e-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
-        <span class="sr-only">Next</span>
-        <span class="text-2xl" aria-hidden="true">
-        <ArrowRight class="shrink-0 size-5" />
-    </span>
-    </button>
-
-    <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2"></div>
-</div>
-<!-- End Slider -->

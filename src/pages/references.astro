@@ -1,0 +1,31 @@
+
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import Code from '../components/Code.astro';
+import Hero from "../components/Hero.astro";
+import Carousel from "../components/Carousel.astro";
+import ReferencesBlock from "../components/ReferencesBlock.astro";
+
+const references = await getCollection('reference');
+const testimonials = await getCollection('testimonial');
+
+---
+
+<Layout>
+
+	<Hero image={"/images/references.png"} />
+
+	<!--<Carousel />-->
+
+	<Code title="testimonials">
+		{JSON.stringify(testimonials, null, 2)}
+	</Code>
+
+	<ReferencesBlock title={"Referenzen"} subtitle={"Ein Auszug einiger Referenzen, an denen wir erfolgreich gearbeitet haben."} />
+
+	<Code title="references">
+		{JSON.stringify(references, null, 2)}
+	</Code>
+
+</Layout>

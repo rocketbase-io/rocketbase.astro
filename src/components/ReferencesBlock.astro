@@ -1,0 +1,47 @@
+
+---
+import {getCollection} from "astro:content";
+import SectionWrapper from "./SectionWrapper.astro";
+import {Image} from 'astro:assets';
+import {buildImageUrl} from "../lib/directus";
+
+const { title, subtitle } = Astro.props;
+
+const references = await getCollection('reference');
+---
+
+<SectionWrapper>
+
+    <div class="bgs-secondary gap px-6 xl:px-8">
+        <div class="mx-auto max-w-5xl text-center">
+            {title && <h2 class="mt-2 text-4xl font-bold tracking-tight sm:text-6xl">{title}</h2>}
+            {subtitle && <p class="mt-6 text-lg leading-8 text-muted">{subtitle}</p>}
+        </div>
+    </div>
+    <div class="flex flex-col gap-12">
+        {references.map((r, idx) => {
+            const left = (idx % 2 ) === 0;
+            return <div class={`relative flex ${left ? "flex-row-reverse" : ""} bg-white border rounded-xl shadow-sm overflow-hidden `}>
+                {r.data.teaser?.id &&
+                        <div class="relative flex-auto w-full overflow-hidden h-96">
+                            <Image src={buildImageUrl(r.data.teaser)} alt={r.data.teaser.id} inferSize width={1536} height={768} />
+                        </div>
+                }
+                <div class="flex-none max-w-lg bg-white shadow">
+                    <div class="p-4 flex flex-col h-full sm:p-7">
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white">
+                            {r.data.title}
+                        </h3>
+                        <p class="mt-1 text-gray-500 dark:text-neutral-400">
+                            {r.data.intro}
+                        </p>
+                    </div>
+                    <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none">
+                        Button
+                    </button>
+                </div>
+            </div>
+        })}
+    </div>
+
+</SectionWrapper>

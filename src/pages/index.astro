@@ -1,46 +1,33 @@
+
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
-import {buildImageUrl} from '../lib/directus';
 import Carousel from '../components/Carousel.astro';
 import Code from '../components/Code.astro';
+import Hero from "../components/Hero.astro";
+import MediaContent from "../components/MediaContent.astro";
+import Founder from "../components/Founder.astro";
 
 const [home] = await getCollection('home');
-const customers = await getCollection('customer');
-const references = await getCollection('reference');
-const examples = await getCollection('example');
-const testimonials = await getCollection('testimonial');
+
 ---
 
 <Layout>
 
-	<Carousel />
 
-	<ul>
-		{customers.map(c => (
-			<li><Image src={buildImageUrl(c.data.logo)} alt={c.data.name} width={200} height={100}
-					    /> {c.data.name}</li>
-		))}
-	</ul>
-	<Code title="Home">
-		{JSON.stringify(home, null, 2)}
-	</Code>
+	<Hero title={home.data.hero_title} message={home.data.hero_message} image={"/images/hero-bg.webp"} />
 
-	<Code title="references">
-		{JSON.stringify(references, null, 2)}
-	</Code>
+	<Carousel title={home.data.company_title} />
 
-	<Code title="customers">
-		{JSON.stringify(customers, null, 2)}
-	</Code>
+    <MediaContent title={home.data.service_title}  subTitle={home.data.service_subtitle} image={"/images/services.avif"} message={home.data.service_teaser} buttonText={"Mehr erfahren"} buttonLink="/services" />
 
-	<Code title="testimonials">
-		{JSON.stringify(testimonials, null, 2)}
-	</Code>
+	<MediaContent title={home.data.reference_title}  subTitle={home.data.reference_subtitle} image={"/images/projects_collage.avif"} message={home.data.reference_teaser} buttonText={"Mehr erfahren"} buttonLink="/references" imageLeft />
 
-	<Code title="examples">
-		{JSON.stringify(examples, null, 2)}
-	</Code>
+	<Founder title={home.data.founder_title} message={home.data.founder_text} image={"/images/marten.jpg"} />
+
+	<!--<Code title="Home">-->
+	<!--	{JSON.stringify(home, null, 2)}-->
+	<!--</Code>-->
+
 
 </Layout>

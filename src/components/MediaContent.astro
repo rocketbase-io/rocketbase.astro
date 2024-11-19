@@ -1,0 +1,51 @@
+---
+import {Image} from 'astro:assets';
+import {getCollection} from "astro:content";
+import {ArrowLeft, ArrowRight} from "lucide-astro"
+import {buildImageUrl} from "../lib/directus";
+
+import {marked} from 'marked';
+import SectionWrapper from "./SectionWrapper.astro";
+
+
+const {title, subTitle, message, buttonText, buttonLink, image, imageLeft} = Astro.props;
+
+const content = marked.parse(message);
+---
+
+<SectionWrapper>
+    <div class="container">
+        <div class={`flex flex-col gap-16 ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"} section items-center`}>
+            {image && (
+                    <div class="mb-8 w-full md:mb-0 md:w-1/2" style="transform: none;">
+                        <a href={buttonLink}>
+                            <div class="relative block overflow-hidden rounded-xl transition-all duration-300"
+                                 aria-label="Wir lassen Ergebnisse und unsere Kunden für uns sprechen"
+                                 style="transform: none;">
+                                <div class="absolute inset-0 z-10 bg-black bg-opacity-0 transition-opacity duration-300" style="opacity: 0;" />
+                                <div class="relative w-full overflow-hidden rounded-xl">
+                                    <Image src={image} alt={image} width={600} height={600}/>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+            )}
+            <div class={`md:w-1/2 ${imageLeft ? "md:pr-12" : "md:pl-12"} w-full`} style="opacity: 1; transform: none;">
+                <div class="mb-4 text-lg font-semibold leading-7 text-highlight">{title}</div>
+                <h3 class="mb-4 text-2xl font-bold">{subTitle}</h3>
+                <div class="mb-6">
+                    <div class="prose w-full text-lg dark:prose-invert">
+                        <article set:html={content}/>
+                    </div>
+                </div>
+                {buttonText && buttonLink && (
+                        <a href={buttonLink}>
+                            <div class="inline-block rounded-lg bg-gray-900 px-6 py-3 font-semibold text-white shadow-md transition-colors duration-300 hover:bg-gray-800"
+                                 tabindex="0">{buttonText}
+                            </div>
+                        </a>
+                )}
+            </div>
+        </div>
+    </div>
+</SectionWrapper>

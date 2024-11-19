@@ -6,9 +6,9 @@ import Code from '../components/Code.astro';
 import Hero from "../components/Hero.astro";
 import Carousel from "../components/Carousel.astro";
 import ReferencesBlock from "../components/ReferencesBlock.astro";
+import CarouselTestimonials from "../components/CarouselTestimonials.astro";
 
 const references = await getCollection('reference');
-const testimonials = await getCollection('testimonial');
 
 ---
 
@@ -16,11 +16,7 @@ const testimonials = await getCollection('testimonial');
 
 	<Hero image={"/images/references.png"} />
 
-	<!--<Carousel />-->
-
-	<Code title="testimonials">
-		{JSON.stringify(testimonials, null, 2)}
-	</Code>
+	<CarouselTestimonials title="Das sagen unsere Kunden über uns." subtitle="Unsere Ergebnisse sprechen für sich. Natürlich könnten wir erzählen, wie großartig wir sind – aber seien wir ehrlich, wir sind da vielleicht etwas voreingenommen. Deshalb lassen wir lieber unsere Kunden zu Wort kommen und präsentieren Ihnen einige Projekte, auf die wir besonders stolz sind." />
 
 	<ReferencesBlock title={"Referenzen"} subtitle={"Ein Auszug einiger Referenzen, an denen wir erfolgreich gearbeitet haben."} />
 

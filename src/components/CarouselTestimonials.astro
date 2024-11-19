@@ -7,20 +7,18 @@ import SectionWrapper from "./SectionWrapper.astro";
 
 
 
-const {title, small} = Astro.props;
-const customers = await getCollection('customer');
+const {title, subtitle, small} = Astro.props;
+const testimonials = await getCollection('testimonial');
+
 ---
 
 <SectionWrapper>
     {
         title && (
                     <div class="container mx-auto mb bg-background px-6 lg:px-8">
-                        <div class="mx-auto text-center">
-                            {title && (
-                                    <p class="sm:text-2xl sm:leading-normal lg:text-4xl font-bold leading-normal tracking-tight ">
-                                        {title}
-                                    </p>
-                            )}
+                        <div class="mx-auto max-w-5xl text-center">
+                            {title && <h2 class="mt-2 text-4xl font-bold tracking-tight sm:text-6xl">{title}</h2>}
+                            {subtitle && <p class="mt-6 text-lg leading-8 text-muted">{subtitle}</p>}
                         </div>
                     </div>
         )
@@ -44,10 +42,27 @@ const customers = await getCollection('customer');
         <div class="hs-carousel w-full overflow-hidden rounded-lg">
             <div class="relative h-64 -mx-1">
                 <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex items-center flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing">
-                    {customers.map(c => {
+                    {testimonials.map(t => {
+                        console.log(t)
                         return (
                                 <div class="flex justify-center items-center hs-carousel-slide px-1 h-12 w-24 object-contain hover:grayscale-0 dark:brightness-0 dark:invert dark:hover:grayscale">
-                                    <!--<Image src={buildImageUrl(c.data.logo)} alt={c.data.name} inferSize width={200} height={100}/>-->
+                                    <div class="relative mx-auto h-20 w-40">
+                                        {t.data.customer?.logo && <Image src={buildImageUrl(t.data.customer.logo)} alt={t.data.customer.name} inferSize width={200} height={100}/>}
+                                    </div>
+                                    <figure class="mt-2 flex flex-auto flex-col justify-between">
+                                        <blockquote class="p-4 pt-0 text-sm italic leading-8">
+                                            <p>“{t.data.message}”</p>
+                                        </blockquote>
+                                        <figcaption class="mt-2 flex items-center gap-x-4">
+                                            <div class="relative h-10 w-10">
+                                                {t.data.avatar && <Image src={buildImageUrl(t.data.avatar)} alt={t.data.name} inferSize width={t.data.avatar.width ?? 200} height={t.data.avatar.height ?? 200}/>}
+                                            </div>
+                                            <div class="text-base">
+                                                <div class="text-sm font-semibold">{t.data.name}</div>
+                                                <div class="mt-1 text-sm text-muted">{t.data.position}</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
                                 </div>
                         )
                     })}

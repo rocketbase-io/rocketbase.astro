@@ -43,7 +43,6 @@ const testimonials = await getCollection('testimonial');
             <div class="relative h-64 -mx-1">
                 <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex items-center flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing">
                     {testimonials.map(t => {
-                        console.log(t)
                         return (
                                 <div class="flex justify-center items-center hs-carousel-slide px-1 h-12 w-24 object-contain hover:grayscale-0 dark:brightness-0 dark:invert dark:hover:grayscale">
                                     <div class="relative mx-auto h-20 w-40">

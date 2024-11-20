@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Code from '../../components/Code.astro';
+
+const examples = await getCollection('example');
+
+export function getStaticPaths() {
+	return [
+		{ params: { slug: "cms" } },
+		{ params: { slug: "crm" } },
+		{ params: { slug: "pim" } },
+		{ params: { slug: "reporting" } },
+	]
+}
+
+const { slug } = Astro.params;
+
+const selected = examples.find(r => r.data.slug === slug)
+
+
+---
+
+
+<Layout>
+
+	Services
+
+	<Code title="selected example">
+		{JSON.stringify(selected, null, 2)}
+	</Code>
+
+</Layout>

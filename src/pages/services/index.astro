@@ -8,20 +8,16 @@ import ExampleList from "../../components/service/ExampleList.astro";
 import ServicesBlock from "../../components/service/ServicesBlock.astro";
 
 const examples = await getCollection('example');
+const [service] = await getCollection('service');
 
 ---
-
 
 <Layout>
 
 	<Hero image={"/images/references.png"} />
 
-	<ExampleList examples={examples} title="Anwendungsbeispiele" subtitle="Überzeugen Sie sich von unseren Leistungen anhand verschiedener Anwedungsbeispiele. Wir entwickeln gemeinsam mit Ihnen je nach Anforderung ein individuelles System. Damit können Sie sich auf das wesentliche Konzentrieren und sind für die Zukunft optimal aufgestellt." />
+	<ExampleList examples={examples} title={service.data?.example_title} subtitle={service.data?.example_message} />
 
-	<ServicesBlock title="Unsere Services" subtitle="Entdecken Sie, wie wir Ihr Unternehmen mit unserem umfassenden Leistungsspektrum auf das nächste Level bringen können." />
-
-	<Code title="examples">
-		{JSON.stringify(examples, null, 2)}
-	</Code>
+	<ServicesBlock  title={service.data?.example_title} subtitle={service.data?.example_message} sections={service.data.sections} />
 
 </Layout>^

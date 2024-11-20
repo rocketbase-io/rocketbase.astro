@@ -9,24 +9,25 @@ import ReferenceTechstack from "../../components/reference/ReferenceTechstack.as
 import SectionWrapper from "../../components/SectionWrapper.astro";
 import ReferenceAchievements from "../../components/reference/ReferenceAchievements.astro";
 
-const references = await getCollection('reference');
+const [reference] = await getCollection('reference');
+
+const references = await getCollection('references');
 
 export function getStaticPaths() {
 	return [
-		{ params: { reference: "statista-numera" } },
-		{ params: { reference: "mavox-winterdienst" } },
-		{ params: { reference: "sam-vorteilsguru" } },
-		{ params: { reference: "stage-cml" } },
-		{ params: { reference: "bonprix-pim" } },
-		{ params: { reference: "bonprix-collection-planning" } }
+		{ params: { slug: "statista-numera" } },
+		{ params: { slug: "mavox-winterdienst" } },
+		{ params: { slug: "sam-vorteilsguru" } },
+		{ params: { slug: "stage-cml" } },
+		{ params: { slug: "bonprix-pim" } },
+		{ params: { slug: "bonprix-collection-planning" } }
 	]
 }
 
-const { reference } = Astro.params;
+const { slug } = Astro.params;
 
-const selected = references.find(r => r.data.slug === reference)
+const selected = references.find(r => r.data.slug === slug)
 
-console.log(selected?.data.achievements)
 ---
 
 <Layout>
@@ -41,7 +42,7 @@ console.log(selected?.data.achievements)
 
 			<ReferenceTeaser teasers={selected?.data.screens} />
 
-			<ReferenceTechstack title="Verwendete Technologien" techstack={selected?.data.techstacks} />
+			<ReferenceTechstack title={reference.data.techstack_title} techstack={selected?.data.techstacks} />
 
 		</div>
 

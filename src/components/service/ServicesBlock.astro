@@ -1,8 +1,10 @@
 ---
-
+import {Image} from 'astro:assets';
 import SectionWrapper from "../SectionWrapper.astro";
+import {marked} from "marked";
+import {buildImageUrl} from "../../lib/directus";
 
-const {title, subtitle, examples} = Astro.props;
+const {title, subtitle, sections} = Astro.props;
 ---
 
 <SectionWrapper>
@@ -11,5 +13,32 @@ const {title, subtitle, examples} = Astro.props;
             {title && <h2 class="mt-2 text-4xl font-bold tracking-tight sm:text-6xl">{title}</h2>}
             {subtitle && <p class="mt-6 text-lg leading-8 text-muted">{subtitle}</p>}
         </div>
+    </div>
+    <div class="space-y-32">
+        {sections.map((s, index: number) => {
+
+            const content = s.text ? marked.parse(s.text) : undefined;
+            const imageLeft = index % 2 === 0;
+
+            return (
+                    <div class={`flex flex-col items-center gap-8 py-8 ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"}`}>
+                        {s.image && (
+                                <div class="w-full overflow-hidden rounded-lg shadow-lg md:w-1/2" >
+                                    <Image class="" src={buildImageUrl(s.image)} alt={title} inferSize width={s.image.width} height={s.image.height} />
+                                </div>
+                        )}
+                        <div class="w-full space-y-4 md:w-1/2" ><h3
+                                class="text-2xl font-bold">{s.title}</h3>
+                            <div class="space-y-6">
+                                <div class="prose w-full text-lg dark:prose-invert">
+                                    <article set:html={content}/>
+                                </div>
+                            </div>
+                        <!--    ul -->
+                        </div>
+                    </div>
+            )
+
+        })}
     </div>
 </SectionWrapper>

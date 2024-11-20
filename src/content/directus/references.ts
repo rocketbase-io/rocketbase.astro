@@ -51,7 +51,7 @@ export const referencesSchema = z.object({
     review_summary: z.string().optional()
 })
 
-export const referenceCollection = defineCollection({
+export const referencesCollection = defineCollection({
     async loader() {
         const references = await directus.request<References[]>(readItems('references', {
             filter: {

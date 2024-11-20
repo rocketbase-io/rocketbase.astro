@@ -1,13 +1,17 @@
 import {homeCollection} from "./directus/home.ts";
 import {customerCollection} from "./directus/customers.ts";
-import {referenceCollection} from "./directus/references.ts";
 import {testimonialCollection} from "./directus/testimonials.ts";
 import {exampleCollection} from "./directus/examples.ts";
+import {serviceCollection} from "./directus/service.ts";
+import {referenceCollection} from "./directus/reference.ts";
+import {referencesCollection} from "./directus/references.ts";
 
 export const collections = {
-    home: homeCollection,
+    home: homeCollection, // Page
+    service: serviceCollection, // Page
+    reference: referenceCollection, // Page
     customer: customerCollection,
-    reference: referenceCollection,
+    references: referencesCollection,
     testimonial: testimonialCollection,
     example: exampleCollection,
 };

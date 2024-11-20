@@ -6,6 +6,7 @@ import Code from '../../components/Code.astro';
 import Hero from "../../components/Hero.astro";
 import ExampleList from "../../components/service/ExampleList.astro";
 import ServicesBlock from "../../components/service/ServicesBlock.astro";
+import ServiceHero from '../../components/service/ServiceHero.astro';
 
 const examples = await getCollection('example');
 const [service] = await getCollection('service');
@@ -14,7 +15,7 @@ const [service] = await getCollection('service');
 
 <Layout>
 
-	<Hero image={"/images/references.png"} />
+	<ServiceHero />
 
 	<ExampleList examples={examples} title={service.data?.example_title} subtitle={service.data?.example_message} />
 

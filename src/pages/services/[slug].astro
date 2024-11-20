@@ -2,6 +2,11 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Code from '../../components/Code.astro';
+import ExampleFaq from '../../components/example/ExampleFaq.astro';
+import ExampleTestimonial from '../../components/example/ExampleTestimonial.astro';
+import ServicesOverview from '../../components/ServicesOverview.astro';
+import ExampleFeatured from '../../components/example/ExampleFeatured.astro';
+import ExampleHero from '../../components/example/ExampleHero.astro';
 
 const examples = await getCollection('example');
 
@@ -18,13 +23,19 @@ const { slug } = Astro.params;
 
 const selected = examples.find(r => r.data.slug === slug)
 
-
 ---
-
 
 <Layout>
 
-	Services
+	<ExampleHero image={selected?.data.hero_image} title={selected?.data.hero_title} message={selected?.data.hero_message} />
+
+	<ExampleFeatured />
+
+	<ServicesOverview />
+
+	<ExampleTestimonial />
+
+	<ExampleFaq />
 
 	<Code title="selected example">
 		{JSON.stringify(selected, null, 2)}

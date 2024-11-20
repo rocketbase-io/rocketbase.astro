@@ -8,6 +8,7 @@ import SectionWrapper from "./SectionWrapper.astro";
 
 
 const {title, subtitle, small} = Astro.props;
+
 const testimonials = await getCollection('testimonial');
 
 ---
@@ -17,8 +18,8 @@ const testimonials = await getCollection('testimonial');
         title && (
                     <div class="container mx-auto mb bg-background px-6 lg:px-8">
                         <div class="mx-auto max-w-5xl text-center">
-                            {title && <h2 class="mt-2 text-4xl font-bold tracking-tight sm:text-6xl">{title}</h2>}
-                            {subtitle && <p class="mt-6 text-lg leading-8 text-muted">{subtitle}</p>}
+                            {title && <h2 class="mt-2 font-bold tracking-tight text-2xl md:text-5xl">{title}</h2>}
+                            {subtitle && <p class="mt-6 text-xl leading-8 text-muted">{subtitle}</p>}
                         </div>
                     </div>
         )
@@ -40,28 +41,32 @@ const testimonials = await getCollection('testimonial');
           "showDots": false
         }' class="relative">
         <div class="hs-carousel w-full overflow-hidden rounded-lg">
-            <div class="relative h-64 -mx-1">
-                <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex items-center flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing">
+            <div class="relative h-96 -mx-1">
+                <div class="h-full hs-carousel-body absolute top-0 bottom-0 start-0 flex gap-4 items-center flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing">
                     {testimonials.map(t => {
                         return (
-                                <div class="flex justify-center items-center hs-carousel-slide px-1 h-12 w-24 object-contain hover:grayscale-0 dark:brightness-0 dark:invert dark:hover:grayscale">
-                                    <div class="relative mx-auto h-20 w-40">
-                                        {t.data.customer?.logo && <Image src={buildImageUrl(t.data.customer.logo)} alt={t.data.customer.name} inferSize width={200} height={100}/>}
+                                <div class="h-full flex justify-center items-center hs-carousel-slide p-2 object-contain hover:grayscale-0 dark:brightness-0 dark:invert dark:hover:grayscale">
+                                    <div class="h-full flex flex-col rounded-2xl border bg-secondary p-6 shadow-lg ring-1 ring-gray-900/5 hover:ring-highlight">
+                                        { t.data.customer?.logo && (
+                                            <div class="relative flex justify-center items-center h-26 overflow-hidden">
+                                                <Image src={buildImageUrl(t.data.customer.logo)} alt={t.data.customer.name} inferSize width={t.data.customer.logo.width ?? 200} height={t.data.customer.logo.height ?? 100}/>
+                                            </div>
+                                        )}
+                                        <figure class="mt-2 flex flex-auto flex-col justify-between">
+                                            <blockquote class="p-4 pt-0 text-sm italic leading-8">
+                                                <p>“{t.data.message}”</p>
+                                            </blockquote>
+                                            <figcaption class="mt-2 flex items-center gap-x-4">
+                                                <div class="relative h-10 w-10 rounded-full overflow-hidden">
+                                                    {t.data.avatar && <Image src={buildImageUrl(t.data.avatar)} alt={t.data.name} inferSize width={t.data.avatar.width ?? 200} height={t.data.avatar.height ?? 200}/>}
+                                                </div>
+                                                <div class="text-base">
+                                                    <div class="text-sm font-semibold">{t.data.name}</div>
+                                                    <div class="mt-1 text-sm text-muted">{t.data.position}</div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
                                     </div>
-                                    <figure class="mt-2 flex flex-auto flex-col justify-between">
-                                        <blockquote class="p-4 pt-0 text-sm italic leading-8">
-                                            <p>“{t.data.message}”</p>
-                                        </blockquote>
-                                        <figcaption class="mt-2 flex items-center gap-x-4">
-                                            <div class="relative h-10 w-10">
-                                                {t.data.avatar && <Image src={buildImageUrl(t.data.avatar)} alt={t.data.name} inferSize width={t.data.avatar.width ?? 200} height={t.data.avatar.height ?? 200}/>}
-                                            </div>
-                                            <div class="text-base">
-                                                <div class="text-sm font-semibold">{t.data.name}</div>
-                                                <div class="mt-1 text-sm text-muted">{t.data.position}</div>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
                                 </div>
                         )
                     })}

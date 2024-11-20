@@ -7,6 +7,7 @@ import Layout from '../../layouts/Layout.astro';
 import Hero from "../../components/Hero.astro";
 import CarouselTestimonials from "../../components/CarouselTestimonials.astro";
 import ReferenceList from "../../components/reference/ReferenceList.astro";
+import ReferenceHero from "../../components/reference/ReferenceHero.astro";
 
 
 const [reference] = await getCollection('reference');
@@ -15,7 +16,7 @@ const [reference] = await getCollection('reference');
 
 <Layout>
 
-	<Hero image={"/images/references.png"} />
+	<ReferenceHero />
 
 	<CarouselTestimonials title={reference.data.hero_title} subtitle={reference.data.hero_message} />
 

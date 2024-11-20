@@ -1,0 +1,27 @@
+
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import Code from '../../components/Code.astro';
+import Hero from "../../components/Hero.astro";
+import ExampleList from "../../components/service/ExampleList.astro";
+import ServicesBlock from "../../components/service/ServicesBlock.astro";
+
+const examples = await getCollection('example');
+
+---
+
+
+<Layout>
+
+	<Hero image={"/images/references.png"} />
+
+	<ExampleList examples={examples} title="Anwendungsbeispiele" subtitle="Überzeugen Sie sich von unseren Leistungen anhand verschiedener Anwedungsbeispiele. Wir entwickeln gemeinsam mit Ihnen je nach Anforderung ein individuelles System. Damit können Sie sich auf das wesentliche Konzentrieren und sind für die Zukunft optimal aufgestellt." />
+
+	<ServicesBlock title="Unsere Services" subtitle="Entdecken Sie, wie wir Ihr Unternehmen mit unserem umfassenden Leistungsspektrum auf das nächste Level bringen können." />
+
+	<Code title="examples">
+		{JSON.stringify(examples, null, 2)}
+	</Code>
+
+</Layout>^

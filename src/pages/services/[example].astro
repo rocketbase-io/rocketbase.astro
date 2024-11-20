@@ -1,0 +1,39 @@
+
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import Code from '../../components/Code.astro';
+
+
+const examples = await getCollection('example');
+
+export function getStaticPaths() {
+	return [
+		{ params: { example: "statista-numera" } },
+		{ params: { example: "mavox-winterdienst" } },
+		{ params: { example: "sam-vorteilsguru" } },
+		{ params: { example: "stage-cml" } },
+		{ params: { example: "bonprix-pim" } },
+		{ params: { example: "bonprix-collection-planning" } }
+	]
+}
+
+const { example } = Astro.params;
+
+const selected = examples.find(r => r.data.slug === example)
+
+console.log(selected?.data.achievements)
+
+
+---
+
+
+<Layout>
+
+	Services
+
+	<Code title="examples">
+		{JSON.stringify(examples, null, 2)}
+	</Code>
+
+</Layout>

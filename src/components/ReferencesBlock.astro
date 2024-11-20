@@ -24,7 +24,7 @@ const references = await getCollection('reference');
             return <div class={`relative flex ${left ? "flex-row-reverse" : ""} bg-white border rounded-xl shadow-sm overflow-hidden `}>
                 {r.data.teaser?.id &&
                         <div class="relative flex-auto w-full overflow-hidden h-96">
-                            <!--<Image src={buildImageUrl(r.data.teaser)} alt={r.data.teaser.id} inferSize width={1536} height={768} />-->
+                            <Image src={buildImageUrl(r.data.teaser)} alt={r.data.teaser.id} inferSize width={1536} height={768} />
                         </div>
                 }
                 <div class="flex-none max-w-lg bg-white shadow">

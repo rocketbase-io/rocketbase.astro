@@ -3,7 +3,6 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import Carousel from '../components/Carousel.astro';
-import Code from '../components/Code.astro';
 import Hero from "../components/Hero.astro";
 import MediaContent from "../components/MediaContent.astro";
 import Founder from "../components/Founder.astro";
@@ -24,10 +23,6 @@ const [home] = await getCollection('home');
 	<MediaContent title={home.data.reference_title}  subTitle={home.data.reference_subtitle} image={"/images/projects_collage.avif"} message={home.data.reference_teaser} buttonText={"Mehr erfahren"} buttonLink="/references" imageLeft />
 
 	<Founder title={home.data.founder_title} message={home.data.founder_text} image={"/images/marten.jpg"} />
-
-	<!--<Code title="Home">-->
-	<!--	{JSON.stringify(home, null, 2)}-->
-	<!--</Code>-->
 
 
 </Layout>

@@ -1,14 +1,10 @@
 
 ---
-import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-import Code from '../components/Code.astro';
-import Hero from "../components/Hero.astro";
-import Carousel from "../components/Carousel.astro";
-import ReferencesBlock from "../components/ReferencesBlock.astro";
-import CarouselTestimonials from "../components/CarouselTestimonials.astro";
 
-const references = await getCollection('reference');
+import Layout from '../../layouts/Layout.astro';
+import Hero from "../../components/Hero.astro";
+import ReferencesBlock from "../../components/ReferencesBlock.astro";
+import CarouselTestimonials from "../../components/CarouselTestimonials.astro";
 
 ---
 
@@ -19,9 +15,5 @@ const references = await getCollection('reference');
 	<CarouselTestimonials title="Das sagen unsere Kunden über uns." subtitle="Unsere Ergebnisse sprechen für sich. Natürlich könnten wir erzählen, wie großartig wir sind – aber seien wir ehrlich, wir sind da vielleicht etwas voreingenommen. Deshalb lassen wir lieber unsere Kunden zu Wort kommen und präsentieren Ihnen einige Projekte, auf die wir besonders stolz sind." />
 
 	<ReferencesBlock title={"Referenzen"} subtitle={"Ein Auszug einiger Referenzen, an denen wir erfolgreich gearbeitet haben."} />
-
-	<Code title="references">
-		{JSON.stringify(references, null, 2)}
-	</Code>
 
 </Layout>

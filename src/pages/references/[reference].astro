@@ -1,0 +1,52 @@
+
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import ReferenceHeader from "../../components/reference/ReferenceHeader.astro";
+import ReferenceDescription from "../../components/reference/ReferenceDescription.astro";
+import ReferenceTeaser from "../../components/reference/ReferenceTeaser.astro";
+import ReferenceTechstack from "../../components/reference/ReferenceTechstack.astro";
+import SectionWrapper from "../../components/SectionWrapper.astro";
+import ReferenceAchievements from "../../components/reference/ReferenceAchievements.astro";
+
+const references = await getCollection('reference');
+
+export function getStaticPaths() {
+	return [
+		{ params: { reference: "statista-numera" } },
+		{ params: { reference: "mavox-winterdienst" } },
+		{ params: { reference: "sam-vorteilsguru" } },
+		{ params: { reference: "stage-cml" } },
+		{ params: { reference: "bonprix-pim" } },
+		{ params: { reference: "bonprix-collection-planning" } }
+	]
+}
+
+const { reference } = Astro.params;
+
+const selected = references.find(r => r.data.slug === reference)
+
+console.log(selected?.data.achievements)
+---
+
+<Layout>
+
+	<ReferenceHeader image={selected?.data.teaser} title={selected?.data.title} company={selected?.data.customer.name} />
+
+	<ReferenceDescription message={selected?.data.background} responsibilities={selected?.data.responsibilities} />
+
+	<SectionWrapper bgSecondary>
+
+		<div class="flex flex-col gap-12">
+
+			<ReferenceTeaser teasers={selected?.data.screens} />
+
+			<ReferenceTechstack title="Verwendete Technologien" techstack={selected?.data.techstacks} />
+
+		</div>
+
+	</SectionWrapper>
+
+	<ReferenceAchievements achievements={selected?.data.achievements} />
+
+</Layout>

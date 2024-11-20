@@ -1,0 +1,28 @@
+---
+
+import {Image} from 'astro:assets';
+import {buildImageUrl} from "../../lib/directus";
+
+const {teasers} = Astro.props;
+
+---
+
+<div class="container mx-auto px-4">
+    <div class="flex flex-col gap-8 section-sm-top lg:flex-row">
+        <div class="flex w-full flex-col items-center gap-2">
+            <div class="flex w-full items-center gap-12">
+
+                {teasers.map((t) => {
+                    return (
+                            <div class="relative flex flex-col h-56 gap-4 w-full flex-auto justify-center rounded-lg text-center">
+                                <Image class="border shadow rounded-lg" src={buildImageUrl(t)} alt={t.title} inferSize
+                                       width={t.width} height={t.height} />
+                                <div class="text-base text-muted font-semibold">{t.title}</div>
+                            </div>
+                    )
+                })}
+
+            </div>
+        </div>
+    </div>
+</div>

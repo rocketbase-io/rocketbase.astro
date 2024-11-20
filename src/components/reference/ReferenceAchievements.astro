@@ -1,0 +1,19 @@
+---
+import SectionWrapper from "../SectionWrapper.astro";
+const {achievements} = Astro.props;
+---
+
+<SectionWrapper>
+
+    <div class="mt-4 grid grid-cols-1 gap-10 pl-3 md:grid-cols-2 xl:grid-cols-4">
+        {achievements.map((a) => {
+            return (
+                    <div class="relative flex flex-col gap-2 rounded-lg border bg-secondary p-8 pt-12 text-muted shadow">
+                        Icon: {a.icon}
+                        <div class="prose w-full text-lg dark:prose-invert">{a.text}</div>
+                    </div>
+            )
+        })}
+    </div>
+
+</SectionWrapper>

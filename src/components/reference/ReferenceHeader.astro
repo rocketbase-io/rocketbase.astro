@@ -1,0 +1,29 @@
+---
+import {Image} from 'astro:assets';
+import {buildImageUrl} from "../../lib/directus";
+
+const {title, company, image} = Astro.props;
+---
+
+<div class="relative">
+    <div class="relative overflow-hidden h-[30rem]">
+        {image && (
+                <div class="absolute inset-0 -z-10 h-full w-full" style="transform: none;">
+                    <Image class="w-full h-full object-cover" src={buildImageUrl(image)} alt={title} inferSize width={image.width} height={image.height} />
+                </div>
+        )}
+        <div class="absolute inset-0 flex flex-col items-center justify-center animate-fade-in-up">
+            <div class="container mx-auto flex flex-col space-y-6 xl:space-y-8 2xl:space-y-10">
+                <div class="flex flex-col space-y-8"><h1
+                        class="hero-title flex flex-col space-y-1 font-sans text-4xl font-semibold tracking-tighter dark:text-white sm:text-6xl lg:max-w-5xl lg:text-7xl xl:text-[5.125rem]"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="absolute top-0 flex h-full w-full">
+        <div class="container mt-auto">
+            <div class="mb-8 flex w-full flex-col gap-8 rounded-lg border border-white/5 bg-black/25 p-8 text-center backdrop-blur">
+                <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">{title}</h1><span class="text-xl text-white/90">{company}</span></div>
+        </div>
+    </div>
+</div>

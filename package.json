@@ -25,6 +25,7 @@
     "simple-icons-astro": "^13.16.0",
     "tailwindcss": "^3.4.14",
     "tailwindcss-animate": "^1.0.7",
+    "tech-stack-icons": "^2.1.0",
     "typescript": "^5.6.3"
   }
 }

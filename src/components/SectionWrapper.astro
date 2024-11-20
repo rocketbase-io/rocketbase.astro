@@ -1,7 +1,11 @@
 ---
 
+const { bgSecondary } = Astro.props;
+
 ---
 
-<div class="container py-24">
-	<slot />
+<div class=`${bgSecondary ? "bg-secondary" : ""}`>
+	<div class="container py-24">
+		<slot />
+	</div>
 </div>

@@ -1,12 +1,9 @@
 ---
 import {Image} from 'astro:assets';
-import {getCollection} from "astro:content";
 import {ArrowLeft, ArrowRight} from "lucide-astro"
-import {buildImageUrl} from "../lib/directus";
 
 import {marked} from 'marked';
 import SectionWrapper from "./SectionWrapper.astro";
-
 
 const {title, subTitle, message, buttonText, buttonLink, image, imageLeft} = Astro.props;
 

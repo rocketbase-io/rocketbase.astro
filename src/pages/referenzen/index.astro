@@ -1,17 +1,12 @@
-
 ---
-
 import {getCollection} from "astro:content";
 
 import Layout from '../../layouts/Layout.astro';
-import Hero from "../../components/Hero.astro";
 import CarouselTestimonials from "../../components/CarouselTestimonials.astro";
 import ReferenceList from "../../components/reference/ReferenceList.astro";
 import ReferenceHero from "../../components/reference/ReferenceHero.astro";
 
-
 const [reference] = await getCollection('reference');
-
 ---
 
 <Layout>

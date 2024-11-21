@@ -7,7 +7,6 @@ import {buildImageUrl} from "../../lib/directus";
 const { title, subtitle } = Astro.props;
 
 const references = await getCollection('references');
-
 ---
 
 <SectionWrapper>
@@ -37,10 +36,8 @@ const references = await getCollection('references');
                                 {r.data.intro}
                             </p>
                         </div>
-                        <a href={`/references/${r.data.slug}`}>
-                            <button type="button" class="py-3 px-4 inline-flex items-center justify-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none">
-                                Mehr erfahren
-                            </button>
+                        <a href={`./referenzen/${r.data.slug}`} type="button" class="py-3 px-4 inline-flex items-center justify-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none">
+                            Mehr erfahren
                         </a>
                     </div>
                 </div>

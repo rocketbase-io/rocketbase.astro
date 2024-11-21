@@ -10,6 +10,7 @@ export const techstacksSchema = z.object({
     color: z.string().optional(),
     id: z.number(),
     logo: z.string().optional(),
+    icon: directusFileSchema.optional(),
     name: z.string(),
     textColor: z.string(),
     url: z.string().optional()
@@ -58,7 +59,7 @@ export const referencesCollection = defineCollection({
                 status: {_eq: "published"},
             },
             sort: ['sort', 'id'],
-            fields: ["*.*", "techstacks.techstacks_id.*", "customer.logo.*", "screens.directus_files_id.*"]} as any));
+            fields: ["*.*", "techstacks.techstacks_id.*", "techstacks.techstacks_id.icon.*", "customer.logo.*", "screens.directus_files_id.*"]} as any));
 
         console.log('loaded references')
         return references.map(r => {

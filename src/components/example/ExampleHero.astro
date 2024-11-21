@@ -1,8 +1,4 @@
-
 ---
-import {Image} from 'astro:assets';
-import {marked} from "marked";
-import { buildImageUrl } from "../../lib/directus";
 import type { directusFileSchema } from '../../content/shared';
 
 type propsTypes = {
@@ -12,10 +8,6 @@ type propsTypes = {
 }
 
 const { title, message, image } = Astro.props as propsTypes;
-
-const content = message ? marked.parse(message) : undefined;
-
-console.log("image", image, title, message)
 ---
 
 

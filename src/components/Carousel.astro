@@ -1,13 +1,10 @@
 ---
 import {Image} from 'astro:assets';
 import {getCollection} from "astro:content";
-import {ArrowLeft, ArrowRight} from "lucide-astro"
 import {buildImageUrl} from "../lib/directus";
 import SectionWrapper from "./SectionWrapper.astro";
 
-
-
-const {title, small} = Astro.props;
+const {title} = Astro.props;
 const customers = await getCollection('customer');
 ---
 

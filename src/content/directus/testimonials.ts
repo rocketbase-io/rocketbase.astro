@@ -1,6 +1,6 @@
 import {defineCollection, z} from "astro:content";
 import {directus} from "../../lib/directus.ts";
-import type {References, Testimonials} from "../../lib/directus-types";
+import type {Testimonials} from "../../lib/directus-types";
 import {readItems} from "@directus/sdk";
 import {customersSchema} from "./customers.ts";
 import {directusFileSchema} from "../shared.ts";

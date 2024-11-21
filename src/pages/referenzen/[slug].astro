@@ -1,4 +1,3 @@
-
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
@@ -11,21 +10,15 @@ import ReferenceAchievements from "../../components/reference/ReferenceAchieveme
 
 const [reference] = await getCollection('reference');
 
-const references = await getCollection('references');
 
-export function getStaticPaths() {
-	return [
-		{ params: { slug: "statista-numera" } },
-		{ params: { slug: "mavox-winterdienst" } },
-		{ params: { slug: "sam-vorteilsguru" } },
-		{ params: { slug: "stage-cml" } },
-		{ params: { slug: "bonprix-pim" } },
-		{ params: { slug: "bonprix-collection-planning" } }
-	]
+export async function getStaticPaths() {
+	const references = await getCollection('references');
+	return references.map(r => ({params: {slug: r.data.slug}}));
 }
 
 const { slug } = Astro.params;
 
+const references = await getCollection('references');
 const selected = references.find(r => r.data.slug === slug)
 
 ---

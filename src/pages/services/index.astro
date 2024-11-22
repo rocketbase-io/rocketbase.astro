@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import {getCollection} from 'astro:content';
 import ExampleList from "../../components/service/ExampleList.astro";
 import ServicesBlock from "../../components/service/ServicesBlock.astro";
 import ServiceHero from '../../components/service/ServiceHero.astro';
@@ -11,10 +11,12 @@ const [service] = await getCollection('service');
 
 <Layout>
 
-	<ServiceHero />
+    <ServiceHero title={service.data?.hero_title} subtitle={service.data?.hero_message} image={"/images/services.webp"} />
 
-	<ExampleList examples={examples} title={service.data?.example_title} subtitle={service.data?.example_message} />
+    <ExampleList examples={examples} title={service.data?.example_title} subtitle={service.data?.example_message} />
 
-	<ServicesBlock  title={service.data?.example_title} subtitle={service.data?.example_message} sections={service.data.sections} />
+    <ServicesBlock title={"Unsere Services"}
+                   subtitle={"Entdecken Sie, wie wir Ihr Unternehmen mit unserem umfassenden Leistungsspektrum auf das nächste Level bringen können."}
+                   sections={service.data.sections} />
 
 </Layout>^

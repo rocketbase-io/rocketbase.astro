@@ -8,21 +8,16 @@ import ServicesOverview from '../../components/ServicesOverview.astro';
 import ExampleFeatured from '../../components/example/ExampleFeatured.astro';
 import ExampleHero from '../../components/example/ExampleHero.astro';
 
-const examples = await getCollection('example');
-
 const [benefit] = await getCollection('benefit');
 
-export function getStaticPaths() {
-	return [
-		{ params: { slug: "cms" } },
-		{ params: { slug: "crm" } },
-		{ params: { slug: "pim" } },
-		{ params: { slug: "reporting" } },
-	]
+export async function getStaticPaths() {
+	const examples = await getCollection('example');
+	return examples.map(r => ({params: {slug: r.data.slug}}));
 }
 
 const { slug } = Astro.params;
 
+const examples = await getCollection('example');
 const selected = examples.find(r => r.data.slug === slug)
 
 ---

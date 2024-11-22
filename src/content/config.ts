@@ -6,6 +6,7 @@ import {serviceCollection} from "./directus/service.ts";
 import {referenceCollection} from "./directus/reference.ts";
 import {referencesCollection} from "./directus/references.ts";
 import {benefitCollection} from "./directus/benefit.ts";
+import {postsCollection} from "./directus/posts.ts";
 
 export const collections = {
     home: homeCollection, // Page
@@ -16,4 +17,5 @@ export const collections = {
     testimonial: testimonialCollection,
     example: exampleCollection,
     benefit: benefitCollection,
+    posts: postsCollection,
 };

@@ -3,6 +3,7 @@ import {marked} from "marked";
 import {Image} from 'astro:assets';
 import SectionWrapper from "../SectionWrapper.astro";
 import {buildImageUrl} from "../../lib/directus";
+import {Icon} from "astro-icon/components";
 
 const { title, message, image, bulletpoints } = Astro.props;
 
@@ -33,7 +34,7 @@ const content = message ? marked.parse(message) : undefined;
                            <div class="feature-item relative translate-y-0 transform rounded-lg border p-6 opacity-100 shadow-md transition-all duration-500 ease-out hover:scale-105 is-visible bg-card">
                                <dt class="mb-4 flex items-center">
                                    <div class="mr-4 flex h-12 w-12 items-center justify-center rounded-md bg-highlight text-white">
-                                       {b.icon}
+                                       <Icon name={`lucide:${b.icon}`}  />
                                    </div>
                                    <p class="text-lg font-medium leading-6">{b.key}</p>
                                </dt>

@@ -1,8 +1,8 @@
 ---
 import {Image} from "astro:assets";
-import { Send } from 'lucide-astro'
 import { Github, Xing, Linkedin } from 'simple-icons-astro'
 import logo from '../assets/logo.svg';
+import {Icon} from "astro-icon/components";
 const year = new Date().getFullYear()
 const iconClasses = "text-gray-600 hover:text-black dark:hover:text-white duration-300 w-8 h-8"
 ---
@@ -54,7 +54,7 @@ const iconClasses = "text-gray-600 hover:text-black dark:hover:text-white durati
                     <Github class={iconClasses} />
                 </a>
                 <a target="_blank" href="mailto:info@rocketbase.io" rel="noreferrer">
-                    <Send class={iconClasses} />
+                    <Icon name="lucide:send" class={iconClasses} />
                 </a>
             </div>
         </div>

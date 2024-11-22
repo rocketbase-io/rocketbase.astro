@@ -25,6 +25,7 @@ export const benefitCollection = defineCollection({
         faq_questions: z.array(questionSchema).optional(),
         offer_title: z.string().optional(),
         offer_message: z.string().optional(),
+        offer_bulletpoints: z.array(bulletPointSchema).optional(),
         cta_title: z.string().optional(),
         cta_message: z.string().optional(),
         cta_bulletpoints: z.array(bulletPointSchema).optional(),

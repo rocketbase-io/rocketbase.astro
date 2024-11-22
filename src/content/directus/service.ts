@@ -7,6 +7,7 @@ import {directusFileSchema} from "../shared.ts";
 export const bulletPointSchema = z.object({
     icon: z.string().optional(),
     text: z.string().optional(),
+    title: z.string().optional(),
 })
 
 

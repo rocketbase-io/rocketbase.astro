@@ -5,8 +5,8 @@ import {marked} from "marked";
 
 const [benefit] = await getCollection('benefit');
 
-console.log(benefit)
 const content = benefit.data.offer_message ? marked.parse(benefit.data.offer_message) : undefined;
+
 ---
 
 <SectionWrapper>
@@ -23,16 +23,22 @@ const content = benefit.data.offer_message ? marked.parse(benefit.data.offer_mes
                 </div>
             </div>
             <div class="relative grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3 lg:w-1/2 lg:grid-cols-2 xl:grid-cols-3">
-                <div class="relative">
-                    <div class="rounded-xl border bg-card text-card-foreground shadow group h-full cursor-pointer transition-colors duration-300 hover:bg-highlight hover:text-primary-foreground">
-                        <div class="flex h-full flex-col items-center justify-center p-3 text-center sm:p-4">
-                            <div class="rounded-full bg-highlight p-3 text-white transition-colors duration-300 group-hover:bg-primary-foreground group-hover:text-primary sm:p-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sprout h-5 w-5 sm:h-6 sm:w-6"><path d="M7 20h10"></path><path d="M10 20c5.5-2.5.8-6.4 3-10"></path><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"></path><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"></path></svg>
+                {benefit.data.offer_bulletpoints?.map((b, idx) => {
+                    return (
+                            <div class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800">
+                                <div class="p-4 md:p-5">
+                                    <div class="flex flex-col gap-x-5">
+                                        {b.icon}
+                                        <div class="grow">
+                                            <h3 class="group-hover:text-highlight font-semibold text-gray-800 dark:group-hover:text-neutral-400 dark:text-neutral-200">
+                                                {b.title}
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h3 class="mt-3 text-sm font-semibold sm:mt-4 sm:text-base">Konzeption &amp; Beratung</h3>
-                        </div>
-                    </div>
-                </div>
+                    )
+                })}
             </div>
         </div>
     </div>

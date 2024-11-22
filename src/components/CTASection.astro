@@ -6,7 +6,7 @@ import {marked} from "marked";
 const [benefit] = await getCollection('benefit');
 
 console.log(benefit)
-const content = benefit.data.offer_message ? marked.parse(benefit.data.cta_message) : undefined;
+const content = benefit.data.cta_message ? marked.parse(benefit.data.cta_message) : undefined;
 ---
 
 <SectionWrapper>

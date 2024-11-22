@@ -1,5 +1,58 @@
+
 ---
+import {getCollection} from "astro:content";
+import SectionWrapper from "../SectionWrapper.astro";
+import {buildImageUrl} from "../../lib/directus";
+import {Image} from 'astro:assets';
+
+const references = await getCollection('references');
+
+const { referenceIds } = Astro.props;
+
+const selected = references.filter(r => referenceIds.includes(r.id))
+
+
+const testimonial = selected[0];
+console.log(testimonial)
 
 ---
 
-<div>Testimonial</div>
+<SectionWrapper bgSecondary>
+    <div class="container">
+        <h1 class="mb-20 text-center text-4xl font-bold text-foreground" style="opacity: 1; transform: none;">Ein maßgeschneidertes CRM-System von rocketbase.io</h1>
+        <div class="flex flex-col items-center gap-8 lg:flex-row" style="opacity: 1; transform: none;">
+            {testimonial.data.teaser && (
+                    <div class="w-full lg:w-1/2" style="opacity: 1; transform: none;">
+                        <Image src={buildImageUrl(testimonial.data.teaser)} alt={testimonial.data.teaser.title ?? "teaser-image"} inferSize width={testimonial.data.teaser.width ?? 24} height={testimonial.data.teaser.height ?? 24} />
+                    </div>
+            )}
+            <div class="w-full space-y-6 lg:w-1/2">
+                <h2 class="text-3xl font-bold text-foreground" style="opacity: 1; transform: none;">{testimonial.data.title}</h2>
+                <p class="text-muted-foreground" style="opacity: 1; transform: none;">{testimonial.data.intro}</p>
+                <div style="opacity: 1; transform: none;">
+                    <a class="inline-block rounded-md bg-primary px-6 py-3 text-lg font-semibold text-primary-foreground transition-colors hover:bg-primary/90" href={`/references/${testimonial.data.slug}`}>
+                        Mehr erfahren
+                    </a>
+                </div>
+                <div class="mt-8 rounded-lg p-6 text-card-foreground shadow-md bg-card" style="opacity: 1; transform: none;">
+                    <div class="mb-4 space-y-6 text-lg">
+                        <div class="prose w-full text-lg dark:prose-invert">
+                            <p>{testimonial.data.review_summary}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        {testimonial.data.review_avatar && (
+                                <div class="relative h-14 w-14 rounded-full overflow-hidden border-2 shadow">
+                                    <Image src={buildImageUrl(testimonial.data.review_avatar)} alt={testimonial.data.review_avatar.title ?? "avatar-testimonial"} inferSize width={testimonial.data.review_avatar.width ?? 24} height={testimonial.data.review_avatar.height ?? 24} />
+                                </div>
+                        )}
+                        <div>
+                            <p class="text-lg font-semibold text-foreground">Christian Grupp, Head of IT</p>
+                            <p class="text-muted-foreground">{testimonial.data.customer.name}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</SectionWrapper>

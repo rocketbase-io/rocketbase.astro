@@ -12,8 +12,6 @@ const examples = await getCollection('example');
 
 const [benefit] = await getCollection('benefit');
 
-console.log(benefit)
-
 export function getStaticPaths() {
 	return [
 		{ params: { slug: "cms" } },
@@ -37,12 +35,8 @@ const selected = examples.find(r => r.data.slug === slug)
 
 	<ServicesOverview />
 
-	<ExampleTestimonial />
+	<ExampleTestimonial referenceIds={selected?.data.references} />
 
 	<ExampleFaq title={benefit.data.faq_title} questions={benefit.data.faq_questions} />
-
-	<Code title="selected example">
-		{JSON.stringify(selected, null, 2)}
-	</Code>
 
 </Layout>

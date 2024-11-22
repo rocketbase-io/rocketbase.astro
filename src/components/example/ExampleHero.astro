@@ -2,33 +2,32 @@
 import {Image} from 'astro:assets';
 import {buildImageUrl} from "../../lib/directus";
 
-const { title, message, image } = Astro.props;
-
+const {title, message, image} = Astro.props;
 ---
 
 
 <!-- Hero -->
 <div class="h-screen relative shadow overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/polygon-bg-element.svg')] dark:before:bg-[url('https://preline.co/assets/svg/examples-dark/polygon-bg-element.svg')] before:bg-no-repeat before:bg-top before:bg-cover before:size-full before:-z-[1] before:transform before:-translate-x-1/2">
-  <div class="container h-full flex flex-col items-center justify-between mx-auto px-8 pt-24 pb-10">
-      {image && (
-          <div class="flex-auto shadow border-4 rounded-lg overflow-hidden transition-all duration-500 ease-out hover:scale-105 is-visible">
-            <Image class="h-full"  src={buildImageUrl(image)} alt={image.title ?? "image"} inferSize width={image.width} height={image.height}/>
-          </div>
-      )}
-      <div class="flex flex-col justify-start p-32">
+    <div class="container h-full flex flex-col items-center justify-between mx-auto px-8 pt-24 pb-10">
+        {image && (
+                <div class="flex-auto shadow border-4 rounded-lg overflow-hidden transition-all duration-500 ease-out hover:scale-105 is-visible">
+                    <Image class="h-full" src={buildImageUrl(image)} alt={image.title ?? "image"} inferSize
+                           width={image.width} height={image.height}/>
+                </div>
+        )}
+        <div class="flex flex-col justify-start p-32">
 
-        <div class="mt-5 text-center mx-auto">
-          <h1 class="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
-            {title}
-          </h1>
+            <div class="mt-5 text-center mx-auto">
+                <h1 class="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
+                    {title}
+                </h1>
+            </div>
+
+            <div class="mt-5 text-center mx-auto">
+                <p class="text-lg text-gray-600 dark:text-neutral-400">{message}</p>
+            </div>
+
         </div>
-
-        <div class="mt-5 text-center mx-auto">
-          <p class="text-lg text-gray-600 dark:text-neutral-400">{message}</p>
-        </div>
-
-      </div>
     </div>
-  </div>
 </div>
 <!-- End Hero -->

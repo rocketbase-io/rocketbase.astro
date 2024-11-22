@@ -3,6 +3,7 @@ import {marked} from "marked";
 import {Image} from 'astro:assets';
 import SectionWrapper from "../SectionWrapper.astro";
 import {buildImageUrl} from "../../lib/directus";
+
 const { title, message, image, bulletpoints } = Astro.props;
 
 const content = message ? marked.parse(message) : undefined;

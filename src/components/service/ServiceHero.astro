@@ -8,9 +8,9 @@ const {title, subtitle, image} = Astro.props;
 
     <div class="container mx-auto flex flex-col md:flex-row-reverse justify-center gap-16 items-center px-8 pt-24 pb-10">
         {image && (
-        <div class="flex items-centerh-[25rem] w-[25rem]">
-            <Image src={image} alt={image} inferSize width={1120} height={1040}/>
-        </div>
+                <div class="flex items-centerh-[25rem] w-[25rem]">
+                    <Image src={image} alt={image} inferSize width={1120} height={1040}/>
+                </div>
         )}
         <div class="flex flex-col max-w-xl">
             <!-- Title -->

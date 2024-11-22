@@ -29,7 +29,7 @@ const selected = examples.find(r => r.data.slug === slug)
 
 	<ExampleHero image={selected?.data.hero_image} title={selected?.data.hero_title} message={selected?.data.hero_message} />
 
-	<ExampleFeatured />
+	<ExampleFeatured image={selected?.data.feature_image} title={selected?.data.feature_title} message={selected?.data.feature_message} bulletpoints={selected?.data.feature_bulletpoints} />
 
 	<ServicesOverview />
 

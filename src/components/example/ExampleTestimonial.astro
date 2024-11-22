@@ -11,9 +11,8 @@ const { referenceIds } = Astro.props;
 
 const selected = references.filter(r => referenceIds.includes(r.id))
 
-
+// TODO Only one reference is shown currently. No switcher anymore
 const testimonial = selected[0];
-console.log(testimonial)
 
 ---
 

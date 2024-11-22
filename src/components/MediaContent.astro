@@ -12,7 +12,7 @@ const content = marked.parse(message);
 
 <SectionWrapper>
     <div class="container">
-        <div class={`flex flex-col gap-16 ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"} section items-center`}>
+        <div class={`flex flex-col gap-16 ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"} items-center`}>
             {image && (
                     <div class="mb-8 w-full md:mb-0 md:w-1/2" style="transform: none;">
                         <a href={buttonLink}>
@@ -27,7 +27,7 @@ const content = marked.parse(message);
                         </a>
                     </div>
             )}
-            <div class={`md:w-1/2 ${imageLeft ? "md:pr-12" : "md:pl-12"} w-full`} style="opacity: 1; transform: none;">
+            <div class={`md:w-1/2 ${imageLeft ? "md:pl-12" : "md:pr-12"} w-full`} style="opacity: 1; transform: none;">
                 <div class="mb-4 text-lg font-semibold leading-7 text-highlight">{title}</div>
                 <h3 class="mb-4 text-2xl font-bold">{subTitle}</h3>
                 <div class="mb-6">

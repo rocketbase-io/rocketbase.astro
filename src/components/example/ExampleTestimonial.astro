@@ -15,12 +15,13 @@ const selected = references.filter(r => referenceIds.includes(r.id))
 const testimonial = selected[0];
 
 ---
+{testimonial && (
 
 <SectionWrapper bgSecondary>
     <div class="container">
         <h1 class="mb-20 text-center text-4xl font-bold text-foreground" style="opacity: 1; transform: none;">Ein maßgeschneidertes CRM-System von rocketbase.io</h1>
         <div class="flex flex-col items-center gap-8 lg:flex-row" style="opacity: 1; transform: none;">
-            {testimonial.data.teaser && (
+            {testimonial?.data.teaser && (
                     <div class="w-full lg:w-1/2" style="opacity: 1; transform: none;">
                         <Image src={buildImageUrl(testimonial.data.teaser)} alt={testimonial.data.teaser.title ?? "teaser-image"} inferSize width={testimonial.data.teaser.width ?? 24} height={testimonial.data.teaser.height ?? 24} />
                     </div>
@@ -55,3 +56,5 @@ const testimonial = selected[0];
         </div>
     </div>
 </SectionWrapper>
+
+    )}

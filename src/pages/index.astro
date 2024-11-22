@@ -6,6 +6,7 @@ import Hero from "../components/Hero.astro";
 import MediaContent from "../components/MediaContent.astro";
 import Founder from "../components/Founder.astro";
 import CTASection from "../components/CTASection.astro";
+import ServicesOverview from "../components/ServicesOverview.astro";
 
 const [home] = await getCollection('home');
 
@@ -19,6 +20,8 @@ const [home] = await getCollection('home');
 	<Carousel title={home.data.company_title} />
 
     <MediaContent title={home.data.service_title}  subTitle={home.data.service_subtitle} image={"/images/services.avif"} message={home.data.service_teaser} buttonText={"Mehr erfahren"} buttonLink="/services" />
+
+	<ServicesOverview />
 
 	<MediaContent title={home.data.reference_title}  subTitle={home.data.reference_subtitle} image={"/images/projects_collage.avif"} message={home.data.reference_teaser} buttonText={"Mehr erfahren"} buttonLink="/references" imageLeft />
 

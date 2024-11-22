@@ -9,7 +9,7 @@ const {achievements} = Astro.props;
         {achievements.map((a) => {
             return (
                     <div class="relative flex flex-col gap-2 rounded-lg border bg-secondary p-8 pt-12 text-muted shadow">
-                        Icon: {a.icon}
+                        {a.icon}
                         <div class="prose w-full text-lg dark:prose-invert">{a.text}</div>
                     </div>
             )

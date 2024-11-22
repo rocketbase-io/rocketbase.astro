@@ -57,11 +57,11 @@ const currentPath = pathname.slice(1);
                  class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:grow-0 sm:basis-auto sm:block sm:order-2 rounded-full shadow border p-2 bg-background"
                  aria-labelledby="hs-navbar-alignment-collapse">
                 <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:mt-0 px-4">
-                    <a class={`${currentPath === "referenzen" ? "underline-offset-4 underline" : "text-gray-600"} font-semibold`}
+                    <a class={`${currentPath.includes("references") ? "underline-offset-4 underline" : "text-gray-600"} font-semibold`}
                        href="/references">Referenzen</a>
-                    <a class={`${currentPath === "services" ? "underline-offset-4 underline" : "text-gray-600"} font-semibold`}
+                    <a class={`${currentPath.includes("services") ? "underline-offset-4 underline" : "text-gray-600"} font-semibold`}
                        href="/services">Leistungen</a>
-                    <a class={`${currentPath === "blog" ? "underline-offset-4 underline" : "text-gray-600"} font-semibold`}
+                    <a class={`${currentPath.includes("blog") ? "underline-offset-4 underline" : "text-gray-600"} font-semibold`}
                        href="/blog">Blog</a>
                 </div>
             </div>

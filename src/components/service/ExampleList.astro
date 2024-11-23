@@ -28,7 +28,7 @@ const {title, subtitle} = Astro.props;
             return (
                     <div class={`flex flex-col gap-16 ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"} section items-center`}>
                         <div class="mb-8 w-full md:mb-0 md:w-1/2" style="transform: none;">
-                            <a href={`/services/${e.data.slug}`}>
+                            <a href={`/leistungen/${e.data.slug}`}>
                                 <div class="relative block overflow-hidden rounded-xl transition-all duration-300"
                                      aria-label={e.data.slug}>
                                     <div class="absolute inset-0 z-10 bg-black bg-opacity-0 transition-opacity duration-300"
@@ -50,7 +50,7 @@ const {title, subtitle} = Astro.props;
                                     <article set:html={content}/>
                                 </div>
                             </div>
-                            <a href={`/services/${e.data.slug}`}>
+                            <a href={`/leistungen/${e.data.slug}`}>
                                 <div class="inline-block rounded-lg bg-gray-900 px-6 py-3 font-semibold text-white shadow-md transition-colors duration-300 hover:bg-gray-800"
                                      tabindex="0" style="transform: none;">
                                     {e.data.hero_title}

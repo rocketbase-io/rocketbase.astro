@@ -1,0 +1,54 @@
+[[redirects]]
+from = "/de"
+to = "/"
+status = 302
+
+[[redirects]]
+from = "/de/referenzen"
+to = "/referenzen"
+status = 302
+
+[[redirects]]
+from = "/de/referenzen/*"
+to = "/referenzen/:splat"
+status = 302
+
+[[redirects]]
+from = "/de/leistungen"
+to = "/leistungen"
+status = 302
+
+[[redirects]]
+from = "/de/leistungen/*"
+to = "/leistungen/:splat"
+status = 302
+
+[[redirects]]
+from = "/de/blog"
+to = "/blog"
+status = 302
+
+[[redirects]]
+from = "/de/blog/*"
+to = "/blog/:splat"
+status = 302
+
+[[redirects]]
+from = "/de/imprint"
+to = "/imprint"
+status = 302
+
+[[redirects]]
+from = "/impressum"
+to = "/imprint"
+status = 302
+
+[[redirects]]
+from = "/de/privacy"
+to = "/privacy"
+status = 302
+
+[[redirects]]
+from = "/datenschutz"
+to = "/privacy"
+status = 302

@@ -1,6 +1,6 @@
 import {defineCollection, z} from "astro:content";
-import {directus} from "../../lib/directus.ts";
-import type {PageService} from "../../lib/directus-types";
+import {directus} from "@lib/directus.ts";
+import type {PageService} from "@lib/directus-types";
 import {readSingleton} from "@directus/sdk";
 import {directusFileSchema} from "../shared.ts";
 
@@ -10,14 +10,27 @@ export const bulletPointSchema = z.object({
     title: z.string().optional(),
 })
 
+export type bulletPointType = z.infer<typeof bulletPointSchema>;
 
-export const sectionSchema = z.object({
+export const serviceSectionSchema = z.object({
     slug: z.string().optional(),
     title: z.string().optional(),
     text: z.string().optional(),
     image: directusFileSchema.optional(),
     bulletPoints: z.array(bulletPointSchema).optional(),
 })
+
+export type serviceSectionType = z.infer<typeof serviceSectionSchema>;
+
+const servicesSchema = z.object({
+    hero_title: z.string().optional(),
+    hero_message: z.string().optional(),
+    example_title: z.string().optional(),
+    example_message: z.string().optional(),
+    sections: z.array(serviceSectionSchema).optional(),
+});
+
+export type servicesType = z.infer<typeof servicesSchema>;
 
 export const serviceCollection = defineCollection({
     async loader() {
@@ -37,11 +50,5 @@ export const serviceCollection = defineCollection({
             id: 'service',
         }]
     },
-    schema: z.object({
-        hero_title: z.string().optional(),
-        hero_message: z.string().optional(),
-        example_title: z.string().optional(),
-        example_message: z.string().optional(),
-        sections: z.array(sectionSchema).optional(),
-    }),
+    schema: servicesSchema,
 });

@@ -1,10 +1,9 @@
 import {defineCollection, z} from "astro:content";
-import {directus} from "../../lib/directus.ts";
-import type {BenefitIndividual} from "../../lib/directus-types";
+import {directus} from "@lib/directus.ts";
+import type {BenefitIndividual} from "@lib/directus-types";
 import {readSingleton} from "@directus/sdk";
 import {defaultQuery} from "../shared.ts";
 import {bulletPointSchema} from "./service.ts";
-import {examplesSchema} from "./examples.ts";
 
 const questionSchema = z.object({
     question: z.string().optional(),

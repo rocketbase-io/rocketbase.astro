@@ -1,8 +1,18 @@
 import {defineCollection, z} from "astro:content";
-import {directus} from "../../lib/directus.ts";
-import type {PageReference} from "../../lib/directus-types";
+import {directus} from "@lib/directus.ts";
+import type {PageReference} from "@lib/directus-types";
 import {readSingleton} from "@directus/sdk";
 import {defaultQuery} from "../shared.ts";
+
+export const referenceSchema = z.object({
+    hero_title: z.string().optional(),
+    hero_message: z.string().optional(),
+    reference_title: z.string().optional(),
+    reference_message: z.string().optional(),
+    techstack_title: z.string().optional(),
+});
+
+export type referenceType = z.infer<typeof referenceSchema>;
 
 export const referenceCollection = defineCollection({
     async loader() {
@@ -14,11 +24,5 @@ export const referenceCollection = defineCollection({
             id: 'reference',
         }]
     },
-    schema: z.object({
-        hero_title: z.string().optional(),
-        hero_message: z.string().optional(),
-        reference_title: z.string().optional(),
-        reference_message: z.string().optional(),
-        techstack_title: z.string().optional(),
-    }),
+    schema: referenceSchema,
 });

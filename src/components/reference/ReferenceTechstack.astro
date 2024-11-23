@@ -1,8 +1,14 @@
 ---
 import {Image} from "astro:assets";
 import {buildImageUrl} from "@lib/directus";
-const {title, techstack} = Astro.props;
+import type {referencesType} from "../../content/directus";
 
+interface Props  {
+    title?: string;
+    techstack?: referencesType["techstacks"];
+}
+
+const {title, techstack} = Astro.props;
 ---
 
 <div class="container">
@@ -12,7 +18,7 @@ const {title, techstack} = Astro.props;
         </div>
     </div>
     <div class="grid grid-cols-3 gap-6 tracking-tight md:grid-cols-4 lg:grid-cols-5">
-        {techstack.map((t) => {
+        {techstack && techstack.map((t) => {
             return (
                     <a
                             class="flex w-full items-center justify-between gap-x-2 rounded-md border bg-primary-foreground shadow"
@@ -21,7 +27,9 @@ const {title, techstack} = Astro.props;
                             rel="noreferrer"
                     >
                         <div class="flex rounded-l-md bg-opacity-20 p-2">
+                            {t.icon &&
                             <Image style={`color: ${t.color}`} src={buildImageUrl(t.icon)} alt={"image"} inferSize width={24} height={24} />
+                            }
                         </div>
                         <div
                                 class="w-full py-1 pr-4 text-base font-medium"

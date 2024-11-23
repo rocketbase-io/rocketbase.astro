@@ -33,7 +33,7 @@ const selected = references.find(r => r.data.slug === slug)
 
 		<div class="flex flex-col gap-12">
 
-			<ReferenceTeaser teasers={selected?.data.screens} />
+			<ReferenceTeaser screens={selected?.data.screens} />
 
 			<ReferenceTechstack title={reference.data.techstack_title} techstack={selected?.data.techstacks} />
 

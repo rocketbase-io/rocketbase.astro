@@ -1,11 +1,10 @@
 import {defineCollection, z} from "astro:content";
-import {directus} from "../../lib/directus.ts";
-import type {Testimonials} from "../../lib/directus-types";
+import {directus} from "@lib/directus.ts";
+import type {Testimonials} from "@lib/directus-types";
 import {readItems} from "@directus/sdk";
 import {customersSchema} from "./customers.ts";
 import {directusFileSchema} from "../shared.ts";
 import * as R from "remeda";
-
 
 export const testimonialsSchema = z.object({
     avatar: directusFileSchema.optional(),
@@ -16,6 +15,8 @@ export const testimonialsSchema = z.object({
     status: z.string(),
     message: z.string().optional(),
 })
+
+export type testimonialsType = z.infer<typeof testimonialsSchema>;
 
 export const testimonialCollection = defineCollection({
     async loader() {

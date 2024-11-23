@@ -1,8 +1,10 @@
 ---
 import SectionWrapper from "../SectionWrapper.astro";
-interface Props {
+import type {questionType} from "@content/directus";
+
+interface Props  {
     title?: string;
-    questions: string;
+    questions?: questionType[];
 }
 
 const { title, questions } = Astro.props;

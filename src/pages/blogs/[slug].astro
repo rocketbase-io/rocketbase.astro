@@ -23,7 +23,9 @@ const content = selected?.data.content ? marked.parse(selected.data.content) : u
 <Layout>
 
     <div class="relative w-full h-[40vh]">
-        <Image class="h-full w-full object-cover" src={buildImageUrl(selected?.data.teaser)} alt={selected?.data.teaser.title} inferSize width={selected?.data.teaser.width} height={selected?.data.teaser.height} />
+        {selected?.data.teaser &&
+        <Image class="h-full w-full object-cover" src={buildImageUrl(selected?.data.teaser)} alt={selected?.data.teaser.title||'teaser-image'} inferSize width={selected?.data.teaser.width!!} height={selected?.data.teaser.height!!} />
+        }
     </div>
     <!-- Blog Article -->
     <div class="container px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">

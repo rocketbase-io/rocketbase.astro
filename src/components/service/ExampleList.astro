@@ -3,7 +3,15 @@ import SectionWrapper from "../SectionWrapper.astro";
 import {buildImageUrl} from "@lib/directus";
 import {Image} from 'astro:assets';
 import {marked} from "marked";
-const {title, subtitle, examples} = Astro.props;
+import {getCollection} from "astro:content";
+
+interface Props  {
+    title?: string;
+    subtitle?: string;
+}
+const examples = await getCollection('example');
+
+const {title, subtitle} = Astro.props;
 ---
 
 <SectionWrapper bgSecondary>
@@ -26,8 +34,10 @@ const {title, subtitle, examples} = Astro.props;
                                     <div class="absolute inset-0 z-10 bg-black bg-opacity-0 transition-opacity duration-300"
                                          style="opacity: 0;"></div>
                                     <div class="relative w-full overflow-hidden rounded-xl shadow-lg border">
-                                        <Image class="" src={buildImageUrl(e.data.hero_image)} alt={title} inferSize
-                                               width={e.data.hero_image.width} height={e.data.hero_image.height}/>
+                                        {e.data.hero_image &&
+                                        <Image class="" src={buildImageUrl(e.data.hero_image)} alt={title||'hero-image'} inferSize
+                                               width={e.data.hero_image.width!!} height={e.data.hero_image.height!!}/>
+                                        }
                                     </div>
                                 </div>
                             </a>

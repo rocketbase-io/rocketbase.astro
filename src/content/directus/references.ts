@@ -1,6 +1,6 @@
 import {defineCollection, z} from "astro:content";
-import {directus} from "../../lib/directus.ts";
-import type {References} from "../../lib/directus-types";
+import {directus} from "@lib/directus.ts";
+import type {References} from "@lib/directus-types";
 import {readItems} from "@directus/sdk";
 import {customersSchema} from "./customers.ts";
 import {directusFileSchema} from "../shared.ts";
@@ -15,6 +15,8 @@ export const techstacksSchema = z.object({
     textColor: z.string(),
     url: z.string().optional()
 })
+
+export type techstacksType = z.infer<typeof techstacksSchema>;
 
 export const referencesSchema = z.object({
     customer: customersSchema,
@@ -51,6 +53,8 @@ export const referencesSchema = z.object({
     title: z.string(),
     review_summary: z.string().optional()
 })
+
+export type referencesType = z.infer<typeof referencesSchema>;
 
 export const referencesCollection = defineCollection({
     async loader() {

@@ -5,7 +5,6 @@ import ExampleList from "@components/service/ExampleList.astro";
 import ServicesBlock from "@components/service/ServicesBlock.astro";
 import ServiceHero from '@components/service/ServiceHero.astro';
 
-const examples = await getCollection('example');
 const [service] = await getCollection('service');
 ---
 
@@ -13,7 +12,7 @@ const [service] = await getCollection('service');
 
     <ServiceHero title={service.data?.hero_title} subtitle={service.data?.hero_message} image={"/images/services.webp"} />
 
-    <ExampleList examples={examples} title={service.data?.example_title} subtitle={service.data?.example_message} />
+    <ExampleList title={service.data?.example_title} subtitle={service.data?.example_message} />
 
     <ServicesBlock title={"Unsere Services"}
                    subtitle={"Entdecken Sie, wie wir Ihr Unternehmen mit unserem umfassenden Leistungsspektrum auf das nächste Level bringen können."}

@@ -4,6 +4,15 @@ import {Image} from 'astro:assets';
 import SectionWrapper from "../SectionWrapper.astro";
 import {buildImageUrl} from "@lib/directus";
 import {Icon} from "astro-icon/components";
+import type {featureBulletpointType} from "@content/directus";
+import type {directusFileType} from "@content/shared";
+
+interface Props  {
+    title?: string;
+    message?: string;
+    image?: directusFileType;
+    bulletpoints?: featureBulletpointType[];
+}
 
 const { title, message, image, bulletpoints } = Astro.props;
 
@@ -23,7 +32,7 @@ const content = message ? marked.parse(message) : undefined;
         {image &&
             (
                     <div class="shadow rounded-lg border-4 overflow-hidden transition-all duration-500 ease-out hover:scale-105 is-visible">
-                        <Image class="w-full"  src={buildImageUrl(image)} alt={image.title ?? "image"} inferSize width={image.width} height={image.height}/>
+                        <Image class="w-full"  src={buildImageUrl(image)} alt={image.title ?? "image"} inferSize/>
                     </div>
             )
         }

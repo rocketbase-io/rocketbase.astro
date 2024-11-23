@@ -1,6 +1,12 @@
 ---
 import {marked} from "marked";
 import SectionWrapper from "../SectionWrapper.astro";
+import type {referencesType} from "../../content/directus";
+
+interface Props  {
+    message?: string;
+    responsibilities?: referencesType["responsibilities"];
+}
 
 const {message, responsibilities} = Astro.props;
 
@@ -19,7 +25,7 @@ const content = message ? marked.parse(message) : undefined;
         <dl class="col-span-2 flex-auto space-y-4 border-gray-900/10">
             <div>
                 <div class="flex flex-col gap-8">
-                    {responsibilities.map(r => {
+                    {responsibilities && responsibilities.map(r => {
                         return <div class="rounded-lg border bg-secondary p-4 text-base shadow">
                             <dt class="truncate font-bold text-highlight">{r.outline}</dt>
                             <dd class="tracking-tight text-muted">

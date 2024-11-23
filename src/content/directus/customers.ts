@@ -1,6 +1,6 @@
 import {defineCollection, z} from "astro:content";
-import {directus} from "../../lib/directus.ts";
-import type {Customers} from "../../lib/directus-types";
+import {directus} from "@lib/directus.ts";
+import type {Customers} from "@lib/directus-types";
 import {readItems} from "@directus/sdk";
 import {directusFileSchema} from "../shared.ts";
 
@@ -11,6 +11,8 @@ export const customersSchema =  z.object({
         status: z.string(),
         url: z.string().optional()
     });
+
+export type customersType = z.infer<typeof customersSchema>;
 
 export const customerCollection = defineCollection({
     async loader() {

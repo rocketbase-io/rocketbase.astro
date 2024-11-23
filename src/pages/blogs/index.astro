@@ -45,7 +45,9 @@ const posts = await getCollection('posts');
                 return (
                         <a class="group flex flex-col focus:outline-none" href={`/blogs/${p.data.slug}`}>
                             <div class="relative rounded-xl overflow-hidden">
-                                <Image class="h-full" src={buildImageUrl(p.data.teaser)} alt={p.data.teaser.title ?? "image"} inferSize width={p.data.teaser.width} height={p.data.teaser.height}/>
+                                {p.data.teaser &&
+                                <Image class="h-full" src={buildImageUrl(p.data.teaser)} alt={p.data.teaser.title ?? "image"} inferSize width={p.data.teaser.width!!} height={p.data.teaser.height!!}/>
+                                }
                             </div>
 
                             <div class="mt-7">

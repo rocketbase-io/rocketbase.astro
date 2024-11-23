@@ -3,6 +3,14 @@ import {Image} from 'astro:assets';
 import SectionWrapper from "../SectionWrapper.astro";
 import {marked} from "marked";
 import {buildImageUrl} from "@lib/directus";
+import type {serviceSectionType} from "@content/directus";
+
+
+interface Props  {
+    title?: string;
+    subtitle?: string;
+    sections?: serviceSectionType[]
+}
 
 const {title, subtitle, sections} = Astro.props;
 ---
@@ -15,7 +23,7 @@ const {title, subtitle, sections} = Astro.props;
         </div>
     </div>
     <div class="space-y-32">
-        {sections.map((s, index: number) => {
+        {sections && sections.map((s, index: number) => {
 
             const content = s.text ? marked.parse(s.text) : undefined;
             const imageLeft = index % 2 === 0;
@@ -24,7 +32,7 @@ const {title, subtitle, sections} = Astro.props;
                     <div class={`flex flex-col items-center gap-8 py-8 ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"}`}>
                         {s.image && (
                                 <div class="w-full overflow-hidden rounded-lg shadow-lg md:w-1/2" >
-                                    <Image class="" src={buildImageUrl(s.image)} alt={title} inferSize width={s.image.width} height={s.image.height} />
+                                    <Image class="" src={buildImageUrl(s.image)} alt={title||'service-image'} inferSize width={s.image.width!!} height={s.image.height!!} />
                                 </div>
                         )}
                         <div class="w-full space-y-4 md:w-1/2" ><h3

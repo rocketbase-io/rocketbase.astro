@@ -1,10 +1,18 @@
 import {defineCollection, z} from "astro:content";
-import {directus} from "../../lib/directus.ts";
-import type {Examples} from "../../lib/directus-types";
+import {directus} from "@lib/directus.ts";
+import type {Examples} from "@lib/directus-types";
 import {readItems} from "@directus/sdk";
 import {directusFileSchema} from "../shared.ts";
 import * as R from "remeda";
 
+
+export const featureBulletpointSchema = z.object({
+    key: z.string().optional(),
+    icon: z.string().optional(),
+    text: z.string().optional(),
+})
+
+export type featureBulletpointType = z.infer<typeof featureBulletpointSchema>;
 
 export const examplesSchema = z.object({
     feature_image: directusFileSchema.optional(),
@@ -14,7 +22,7 @@ export const examplesSchema = z.object({
     sort: z.number().nullable(),
     status: z.string(),
 
-    feature_bulletpoints: z.unknown().optional(),
+    feature_bulletpoints: z.array(featureBulletpointSchema).optional(),
     feature_message: z.string().optional(),
     feature_title: z.string().optional(),
     hero_message: z.string().optional(),

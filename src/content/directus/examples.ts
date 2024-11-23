@@ -24,6 +24,8 @@ export const examplesSchema = z.object({
     reference_title: z.string().optional()
 })
 
+export type exampleType = z.infer<typeof examplesSchema>;
+
 export const exampleCollection = defineCollection({
     async loader() {
         const examples = await directus.request<Examples[]>(readItems('examples', {

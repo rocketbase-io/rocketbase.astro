@@ -1,12 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import Code from '../../components/Code.astro';
-import ExampleFaq from '../../components/example/ExampleFaq.astro';
-import ExampleTestimonial from '../../components/example/ExampleTestimonial.astro';
-import ServicesOverview from '../../components/ServicesOverview.astro';
-import ExampleFeatured from '../../components/example/ExampleFeatured.astro';
-import ExampleHero from '../../components/example/ExampleHero.astro';
+import Layout from '@layouts/Layout.astro';
+import Code from '@components/Code.astro';
+import ExampleFaq from '@components/example/ExampleFaq.astro';
+import ExampleTestimonial from '@components/example/ExampleTestimonial.astro';
+import ServicesOverview from '@components/ServicesOverview.astro';
+import ExampleFeatured from '@components/example/ExampleFeatured.astro';
+import ExampleHero from '@components/example/ExampleHero.astro';
 
 const [benefit] = await getCollection('benefit');
 

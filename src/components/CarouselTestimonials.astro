@@ -1,10 +1,15 @@
 ---
 import {Image} from 'astro:assets';
 import {getCollection} from "astro:content";
-import {buildImageUrl} from "../lib/directus";
+import {buildImageUrl} from "@lib/directus";
 import SectionWrapper from "./SectionWrapper.astro";
 
-const {title, subtitle, small} = Astro.props;
+interface Props {
+    title?: string;
+    subtitle?: string;
+}
+
+const {title, subtitle} = Astro.props;
 const testimonials = await getCollection('testimonial');
 ---
 

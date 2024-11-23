@@ -1,5 +1,10 @@
 ---
 import SectionWrapper from "../SectionWrapper.astro";
+interface Props {
+    title?: string;
+    questions: string;
+}
+
 const { title, questions } = Astro.props;
 
 ---

@@ -1,12 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import ReferenceHeader from "../../components/reference/ReferenceHeader.astro";
-import ReferenceDescription from "../../components/reference/ReferenceDescription.astro";
-import ReferenceTeaser from "../../components/reference/ReferenceTeaser.astro";
-import ReferenceTechstack from "../../components/reference/ReferenceTechstack.astro";
-import SectionWrapper from "../../components/SectionWrapper.astro";
-import ReferenceAchievements from "../../components/reference/ReferenceAchievements.astro";
+import ReferenceHeader from "@components/reference/ReferenceHeader.astro";
+import ReferenceDescription from "@components/reference/ReferenceDescription.astro";
+import ReferenceTeaser from "@components/reference/ReferenceTeaser.astro";
+import ReferenceTechstack from "@components/reference/ReferenceTechstack.astro";
+import SectionWrapper from "@components/SectionWrapper.astro";
+import ReferenceAchievements from "@components/reference/ReferenceAchievements.astro";
 
 const [reference] = await getCollection('reference');
 

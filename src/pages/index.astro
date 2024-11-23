@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import Carousel from '../components/Carousel.astro';
-import Hero from "../components/Hero.astro";
-import MediaContent from "../components/MediaContent.astro";
-import Founder from "../components/Founder.astro";
-import CTASection from "../components/CTASection.astro";
-import ServicesOverview from "../components/ServicesOverview.astro";
+import Carousel from '@components/Carousel.astro';
+import Hero from "@components/Hero.astro";
+import MediaContent from "@components/MediaContent.astro";
+import Founder from "@components/Founder.astro";
+import CTASection from "@components/CTASection.astro";
+import ServicesOverview from "@components/ServicesOverview.astro";
 
 const [home] = await getCollection('home');
 

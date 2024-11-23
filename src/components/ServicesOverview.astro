@@ -7,7 +7,6 @@ import {Icon} from "astro-icon/components";
 const [benefit] = await getCollection('benefit');
 
 const content = benefit.data.offer_message ? marked.parse(benefit.data.offer_message) : undefined;
-
 ---
 
 <SectionWrapper>
@@ -24,7 +23,7 @@ const content = benefit.data.offer_message ? marked.parse(benefit.data.offer_mes
                 </div>
             </div>
             <div class="relative grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3 lg:w-1/2 lg:grid-cols-2 xl:grid-cols-3">
-                {benefit.data.offer_bulletpoints?.map((b, idx) => {
+                {benefit.data.offer_bulletpoints?.map((b) => {
                     return (
                             <div class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800">
                                 <div class="p-4 md:p-5">

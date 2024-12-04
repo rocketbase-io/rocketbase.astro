@@ -9,14 +9,14 @@ const content = message ? marked.parse(message) : undefined;
 ---
 
 <div class="relative h-fit overflow-hidden">
-    <div class="relative inset-0 -z-10">
-        <Image src={image} alt={image} inferSize width={2560} height={1200} />
-        <div class="header-gradient absolute inset-0 h-full w-full backdrop-blur-sm"></div>
+    <div class="relative inset-0 -z-10 lg:h-[45rem]">
+        <Image class="w-full h-full object-cover blur-sm" src={image} alt={image} inferSize width={2560} height={1200} />
+        <div class="bg-gradient-to-r from-[#6372a540]  via-[#6372a5] to-[#6372a540] absolute inset-0 h-full w-full"></div>
     </div>
     {(title || content) && (
 
             <div class="container absolute top-0 left-0 right-0 flex h-full flex-col items-center justify-center gap-8 text-center text-white">
-                <h1 class="font-sans text-md md:text-4xl font-semibold tracking-tighter sm:text-6xl lg:max-w-5xl lg:text-7xl xl:text-[5.125rem]">
+                <h1 class="font-sans text-md text-3xl md:text-4xl font-semibol lg:font-bold tracking-tighter lg:max-w-5xl lg:text-7xl xl:text-[5.125rem]">
                     {title}
                 </h1>
                 <div class="max-w-4xl text-lg font-normal leading-8 text-white">

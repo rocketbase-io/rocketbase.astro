@@ -7,6 +7,7 @@ import MediaContent from "@components/MediaContent.astro";
 import Founder from "@components/Founder.astro";
 import CTASection from "@components/CTASection.astro";
 import ServicesOverview from "@components/ServicesOverview.astro";
+import Contact from "../components/Contact.astro";
 
 const [home] = await getCollection('home');
 
@@ -29,5 +30,5 @@ const [home] = await getCollection('home');
 
 	<Founder title={home.data.founder_title} message={home.data.founder_text} image={"/images/marten.jpg"} />
 
-
+	<Contact />
 </Layout>

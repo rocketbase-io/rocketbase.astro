@@ -1,0 +1,65 @@
+---
+import SectionWrapper from "./SectionWrapper.astro";
+import {getCollection} from "astro:content";
+import {Icon} from "astro-icon/components";
+import config from '@config/config.json';
+
+const [benefit] = await getCollection('benefit');
+
+const headings: string[] = benefit.data.challenge_heading;
+
+const heading = headings[0].replace("*", " ");
+
+
+---
+
+<SectionWrapper>
+    <div class="container">
+        <section class="overflow-hidden" style="opacity: 1; transform: none;">
+            <div class="h-auto">
+                <div class="relative h-full">
+                    <div class="mx-auto rounded-3xl bg-secondary px-5 py-10 text-primary md:py-16">
+                        <div class="flex flex-wrap items-center gap-8">
+                            <div class="container mx-auto md:px-10">
+                                <div class="mx-auto w-full text-center">
+                                    <h1 class="mb-6 flex w-full flex-row items-center justify-center gap-2 text-2xl font-extrabold leading-none tracking-normal dark:prose-invert sm:text-3xl md:text-3xl md:tracking-tight">
+                                        {heading.replace("*", "")}
+                                    </h1>
+                                    <p class="text-muted mb-2 px-0 text-lg md:text-xl lg:px-24">{benefit.data.challenge_message}</p>
+                                </div>
+                            </div>
+                            <div class="flex w-full flex-col items-center gap-4">
+                                <div class="flex flex-col gap-4 text-lg md:text-xl">
+                                    <a href={config.bookMeeting} type="button"
+                                       class={`flex items-center justify-center bg-highlight text-white gap-4 py-6 px-12 rounded-lg text-lg md:text-xl font-bold`}>
+                                            <Icon name="lucide:calendar-fold" class="size-8"/>
+                                            <span class="">{benefit.data.challenge_button}</span>
+                                    </a>
+                                    <div class="flex flex-row justify-start gap-8 pb-8">
+                                        {benefit.data.challenge_bulletpoints?.map((b) => (
+                                                <div class="text-base text-muted">
+                                                    <div class="flex flex-row gap-3">
+                                                        {b.icon && (
+                                                                <Icon name=`lucide:${b.icon}` class="size-6 text-highlight"/>
+                                                        )}
+                                                        {b.text}
+                                                    </div>
+                                                </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <Icon name="lucide:mail" class="size-8 grow-0 text-highlight"/>
+                                    <a href="mailto:info@productspace.io?subject=Anfrage%20PLM%20ProductSpace">
+                                        <span class="text-lg">info@productspace.io</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</SectionWrapper>

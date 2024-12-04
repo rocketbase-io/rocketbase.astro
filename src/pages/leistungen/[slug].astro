@@ -6,6 +6,7 @@ import ExampleTestimonial from '@components/example/ExampleTestimonial.astro';
 import ServicesOverview from '@components/ServicesOverview.astro';
 import ExampleFeatured from '@components/example/ExampleFeatured.astro';
 import ExampleHero from '@components/example/ExampleHero.astro';
+import Contact from "../../components/Contact.astro";
 
 const [benefit] = await getCollection('benefit');
 
@@ -29,8 +30,10 @@ const selected = examples.find(r => r.data.slug === slug)
 
 	<ServicesOverview />
 
-	<ExampleTestimonial referenceIds={selected?.data.references} />
+	<ExampleTestimonial referenceIds={selected?.data.references} subtitle={selected?.data.reference_title} />
 
 	<ExampleFaq title={benefit.data.faq_title} questions={benefit.data.faq_questions} />
+
+	<Contact />
 
 </Layout>

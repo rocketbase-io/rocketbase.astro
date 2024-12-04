@@ -7,6 +7,7 @@ import ReferenceTeaser from "@components/reference/ReferenceTeaser.astro";
 import ReferenceTechstack from "@components/reference/ReferenceTechstack.astro";
 import SectionWrapper from "@components/SectionWrapper.astro";
 import ReferenceAchievements from "@components/reference/ReferenceAchievements.astro";
+import Contact from "../../components/Contact.astro";
 
 const [reference] = await getCollection('reference');
 
@@ -42,5 +43,7 @@ const selected = references.find(r => r.data.slug === slug)
 	</SectionWrapper>
 
 	<ReferenceAchievements achievements={selected?.data.achievements} />
+
+	<Contact />
 
 </Layout>

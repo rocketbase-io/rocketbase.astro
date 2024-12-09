@@ -22,6 +22,7 @@ const { title, description, image, lang } = Astro.props;
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<meta name="description" content={description} />
 		<SEO
 			      openGraph={
 			        {

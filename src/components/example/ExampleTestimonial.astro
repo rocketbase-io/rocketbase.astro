@@ -5,7 +5,6 @@ import {buildImageUrl} from "@lib/directus";
 import {Image} from 'astro:assets';
 
 const references = await getCollection('references');
-const r = await getCollection('reference');
 const {referenceIds, subtitle} = Astro.props;
 
 const selected = references.filter(r => referenceIds.includes(r.id))
@@ -23,7 +22,7 @@ const selected = references.filter(r => referenceIds.includes(r.id))
   }' class="relative">
             <div class="hs-carousel relative overflow-hidden w-full min-h-96 bg-white rounded-lg">
                 <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
-                    {selected.map((testimonial, index) =>
+                    {selected.map((testimonial) =>
                             <div class="hs-carousel-slide pb-14 bg-primary-foreground p-6">
                                 <div class="flex justify-center h-full p-6">
                                     <div class="flex flex-col items-center gap-8 lg:flex-row" style="opacity: 1; transform: none;">
@@ -92,7 +91,7 @@ const selected = references.filter(r => referenceIds.includes(r.id))
             </div>
             {selected.length > 1 && <div class="hs-carousel-pagination pt-4 w-full overflow-x-auto">
                 <div class="flex flex-row items-center justify-center gap-x-2 px-2">
-                    {selected.map((t, index) =>
+                    {selected.map((t) =>
                             <div class="hs-carousel-pagination-item shrink-0 border rounded-md overflow-hidden cursor-pointer w-[150px] h-[50px] hs-carousel-active:border-highlight bg-primary-foreground">
                                 <div class="flex justify-center h-full p-2">
                                     <span class="text-center font-semibold self-center text-xs text-gray-800 transition duration-700 dark:text-white">{t.data.customer.name}</span>

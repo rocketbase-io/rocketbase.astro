@@ -6,11 +6,7 @@ import config from '@config/config.json';
 
 const [benefit] = await getCollection('benefit');
 
-const headings: string[] = benefit.data.challenge_heading;
-
-const heading = headings[0].replace("*", " ");
-
-
+const heading = (benefit.data.challenge_heading??["Stellen wir deine *Idee* auf die Probe"])[0].replace("*", " ");
 ---
 
 <SectionWrapper>

@@ -26,7 +26,7 @@ const selected = references.find(r => r.data.slug === slug)
 
 ---
 
-<Layout>
+<Layout title={selected?.data.title || slug} description={`Erfahren Sie wie wir ${selected?.data.customer.name || slug} erfolgreich weiterhelfen konnten.`}>
 
 	<ReferenceHeader image={selected?.data.teaser} title={selected?.data.title} company={selected?.data.customer.name} />
 

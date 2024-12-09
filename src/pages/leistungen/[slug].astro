@@ -20,7 +20,8 @@ const { slug } = Astro.params;
 const examples = await getCollection('example');
 const selected = examples.find(r => r.data.slug === slug)
 ---
-<Layout title={selected?.data.hero_title || slug} description={selected?.data.hero_message || slug}>
+<Layout title={selected?.data.hero_title || slug} description={selected?.data.hero_message || slug}
+		image={`leistungen/${slug}.png`}>
 
 	<ExampleHero image={selected?.data.hero_image} title={selected?.data.hero_title} message={selected?.data.hero_message} />
 

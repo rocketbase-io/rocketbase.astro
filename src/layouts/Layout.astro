@@ -1,4 +1,5 @@
 ---
+import { SEO } from "astro-seo"
 import Navbar from '@components/Navbar.astro'
 import Footer from '@components/Footer.astro'
 import './style.css'
@@ -6,10 +7,11 @@ import './style.css'
 interface Props  {
 	title: string;
 	description: string;
+	image: string;
 	lang?: string;
 }
-
-const { title, description, lang } = Astro.props;
+const { url, site } = Astro;
+const { title, description, image, lang } = Astro.props;
 ---
 <!doctype html>
 <html lang={lang || 'de'}>
@@ -20,7 +22,21 @@ const { title, description, lang } = Astro.props;
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<meta name="description" content={description} />
+		<SEO
+			      openGraph={
+			        {
+			          basic: {
+			            title: `${title ?? 'RocketBase'}`,
+			            type: "website",
+			            image: `${site}og-images/${image ?? 'index.png'}`,
+			            url: url,
+			          },
+			          optional: {
+			            description: `${description ?? 'Description...'}`,
+			          },
+			        }
+			      }
+			    />
 		<script>
 			const preline = await import('preline/dist/preline.js')
 			preline.HSStaticMethods.autoInit()

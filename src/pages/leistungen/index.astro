@@ -10,7 +10,8 @@ const [service] = await getCollection('service');
 ---
 
 <Layout title={service.data?.hero_title || "Unsere Leistungen"}
-        description={service.data?.hero_message || "Kern unseres Angebotes ist die Entwicklung von individuellen, webbasierten Software-Lösungen. Dazu bieten wir ein Paket an Services von Beratung über Design bis zu Hosting. Immer passend zum Projekt geschnürt."}>
+        description={service.data?.hero_message || "Kern unseres Angebotes ist die Entwicklung von individuellen, webbasierten Software-Lösungen. Dazu bieten wir ein Paket an Services von Beratung über Design bis zu Hosting. Immer passend zum Projekt geschnürt."}
+        image="leistungen.png">
 
     <ServiceHero title={service.data?.hero_title} subtitle={service.data?.hero_message} image={"/images/services.webp"} />
 

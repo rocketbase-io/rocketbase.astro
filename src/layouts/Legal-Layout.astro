@@ -2,15 +2,18 @@
 import Layout from './Layout.astro'
 
 interface Props  {
-    title: string;
-    description: string;
-    lang?: string;
+    frontmatter: {
+        title: string;
+        description: string;
+        image: string;
+        lang?: string;
+    }
 }
 
-const { title, description } = Astro.props;
+const { frontmatter } = Astro.props;
 ---
 
-<Layout title={title} description={description}>
+<Layout title={frontmatter.title} description={frontmatter.description} image={frontmatter.image}>
     <div class="container mx-auto mt-4">
         <div class="prose">
             <slot />

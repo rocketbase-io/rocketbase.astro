@@ -12,27 +12,27 @@ const {title, techstack} = Astro.props;
 ---
 
 <div class="container">
-    <div class="px-6 xl:px-8 pb-6">
+    <div class="px-6 xl:px-8 pb-12">
         <div class="mx-auto max-w-5xl text-center">
-            {title && <h2 class="mt-2 text-2xl font-bold tracking-tight sm:text-4xl">{title}</h2>}
+            {title && <h2 class="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">{title}</h2>}
         </div>
     </div>
     <div class="grid grid-cols-3 gap-6 tracking-tight md:grid-cols-4 lg:grid-cols-5">
         {techstack && techstack.map((t) => {
             return (
                     <a
-                            class="flex w-full items-center justify-between gap-x-2 rounded-md border bg-primary-foreground shadow"
+                            class="flex w-full items-center justify-between gap-x-4 rounded-md border bg-primary-foreground shadow"
                             href={t.url}
                             target={"_blank"}
                             rel="noreferrer"
                     >
-                        <div class="flex rounded-l-md bg-opacity-20 p-2">
+                        <div class="flex rounded-l-md bg-opacity-20 p-3">
                             {t.icon &&
-                            <Image style={`color: ${t.color}`} src={buildImageUrl(t.icon)} alt={"image"} inferSize width={24} height={24} />
+                            <Image style={`color: ${t.color}`} src={buildImageUrl(t.icon)} alt={"image"} inferSize width={48} height={48} />
                             }
                         </div>
                         <div
-                                class="w-full py-1 pr-4 text-base font-medium"
+                                class="w-full py-1 pr-4 text-lg font-medium"
                         >
                             {t.name}
                         </div>

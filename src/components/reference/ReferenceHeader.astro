@@ -8,7 +8,7 @@ const {title, company, image} = Astro.props;
 <div class="relative">
     <div class="relative overflow-hidden h-[30rem]">
         {image && (
-                <div class="absolute inset-0 -z-10 h-full w-full" style="transform: none;">
+                <div class="absolute inset-0 -z-10 h-full w-full max-h-[50rem]" style="transform: none;">
                     <Image class="w-full h-full object-cover" src={buildImageUrl(image)} alt={title} inferSize width={image.width} height={image.height} />
                 </div>
         )}

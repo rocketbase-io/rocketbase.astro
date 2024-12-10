@@ -8,8 +8,8 @@ const text = message ? marked.parse(message) : undefined;
 
 ---
 
-<div class="h-screen relative shadow overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/polygon-bg-element.svg')] dark:before:bg-[url('https://preline.co/assets/svg/examples-dark/polygon-bg-element.svg')] before:bg-no-repeat before:bg-top before:bg-cover before:size-full before:-z-[1] before:transform before:-translate-x-1/2">
-    <div class="container h-full flex flex-col gap-2 items-center mx-auto px-8 pt-24 pb-10">
+<div class="relative shadow overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/polygon-bg-element.svg')] dark:before:bg-[url('https://preline.co/assets/svg/examples-dark/polygon-bg-element.svg')] before:bg-no-repeat before:bg-top before:bg-cover before:size-full before:-z-[1] before:transform before:-translate-x-1/2">
+    <div class="container h-full h-max-[50rem] flex flex-col gap-2 items-center mx-auto px-8 pt-24 pb-10">
         {image && (
                 <div class="flex-autp shadow border-4 rounded-lg overflow-hidden transition-all duration-500 ease-out hover:scale-105 is-visible">
                     <Image class="w-full" src={buildImageUrl(image)} alt={image.title ?? "image"} inferSize

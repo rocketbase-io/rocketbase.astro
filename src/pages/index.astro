@@ -21,7 +21,7 @@ const [home] = await getCollection('home');
 
 	<Carousel title={home.data.company_title} />
 
-    <MediaContent title={home.data.service_title}  subTitle={home.data.service_subtitle} image={"/images/services.avif"} message={home.data.service_teaser} buttonText={"Mehr erfahren"} buttonLink="/leistungen" />
+    <MediaContent title={home.data.service_title}  subTitle={home.data.service_subtitle} image={"/images/services.avif"} message={home.data.service_teaser} buttonText={"Mehr erfahren"} buttonLink="/leistungen" imageLeft />
 
 	<ServicesOverview />
 

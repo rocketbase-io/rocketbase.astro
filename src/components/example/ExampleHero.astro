@@ -16,15 +16,15 @@ const text = message ? marked.parse(message) : undefined;
                            width={image.width} height={image.height}/>
                 </div>
         )}
-        <div class="flex flex-col justify-start p-32">
+        <div class="flex flex-col justify-start md:p-12 lg:p-32">
 
             <div class="mt-5 text-center mx-auto">
-                <h1 class="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
+                <h1 class="block font-bold text-gray-800 text-5xl lg:text-6xl dark:text-neutral-200">
                     {title}
                 </h1>
             </div>
 
-            <div class="mt-5 text-center mx-auto text-lg text-gray-600 dark:text-neutral-400">
+            <div class="mt-5 text-center mx-auto text-xl text-gray-600 dark:text-neutral-400">
 
                 <article set:html={text}/>
 

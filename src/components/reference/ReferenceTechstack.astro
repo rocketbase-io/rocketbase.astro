@@ -17,7 +17,7 @@ const {title, techstack} = Astro.props;
             {title && <h2 class="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">{title}</h2>}
         </div>
     </div>
-    <div class="grid grid-cols-3 gap-6 tracking-tight md:grid-cols-4 lg:grid-cols-5">
+    <div class="grid grid-cols-2 gap-6 tracking-tight md:grid-cols-4 lg:grid-cols-5">
         {techstack && techstack.map((t) => {
             return (
                     <a

@@ -1,9 +1,9 @@
 ---
-const { bgSecondary } = Astro.props;
+const { bgSecondary, small } = Astro.props;
 ---
 
 <div class=`${bgSecondary ? "bg-secondary" : ""}`>
-	<div class="container py-24">
+	<div class=`container ${small ? "py-12 md:py-24" : "py-24"}`>
 		<slot />
 	</div>
 </div>

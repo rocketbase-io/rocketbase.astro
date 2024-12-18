@@ -1,7 +1,7 @@
 ---
 import config from '@config/config.json';
-import { Icon } from 'astro-icon/components'
-import {Image} from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
 import logo from '../assets/logo.svg';
 
 const buttonCn = "font-medium text-gray-800 rounded-full hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
@@ -31,20 +31,20 @@ const currentPath = pathname.slice(1);
                     <Icon name="lucide:x" class="hs-collapse-open:block hidden shrink-0 size-4"/>
                     <span class="sr-only">Toggle</span>
                 </button>
-                <div class="hidden sm:flex gap-x-2">
+                <div class="flex gap-x-2">
                     <button type="button"
                             class={`hs-dark-mode-active:hidden block hs-dark-mode ${buttonCn}`}
                             data-hs-theme-click-value="dark">
-              <span class="group inline-flex shrink-0 justify-center items-center size-9">
-                <Icon name="lucide:moon-star" class="shrink-0 size-4"/>
-              </span>
+                        <span class="group inline-flex shrink-0 justify-center items-center size-9">
+                            <Icon name="lucide:moon-star" class="shrink-0 size-4"/>
+                        </span>
                     </button>
                     <button type="button"
                             class={`hs-dark-mode-active:block hidden hs-dark-mode font-medium ${buttonCn}`}
                             data-hs-theme-click-value="light">
-              <span class="group inline-flex shrink-0 justify-center items-center size-9">
-                <Icon name="lucide:sun" class="shrink-0 size-4"/>
-              </span>
+                        <span class="group inline-flex shrink-0 justify-center items-center size-9">
+                            <Icon name="lucide:sun" class="shrink-0 size-4"/>
+                        </span>
                     </button>
                     <a href={config.bookMeeting} type="button"
                             class={`py-2 px-3 items-center gap-x-2 inline-flex rounded-full xl:rounded-lg xl:border hs-dark-mode ${buttonCn}`}>
@@ -54,39 +54,15 @@ const currentPath = pathname.slice(1);
                 </div>
             </div>
             <div id="hs-navbar-alignment"
-                 class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:grow-0 sm:basis-auto sm:block sm:order-2 rounded-full shadow border p-2 bg-background"
+                 class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:grow-0 sm:basis-auto sm:block sm:order-2 sm:rounded-full sm:shadow sm:border sm:p-2 sm:bg-background"
                  aria-labelledby="hs-navbar-alignment-collapse">
-                <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:mt-0 px-4">
-                    <a class={`${currentPath.includes("referenzen") ? "underline-offset-4 underline" : "text-gray-600"} font-semibold`}
+                <div class="flex flex-col gap-5 mt-5 sm:flex-row font-semibold sm:items-center sm:mt-0 pb-6 sm:pb-0">
+                    <a class={`${currentPath.includes("referenzen") ? "underline-offset-4 underline text-highlight" : "text-gray-600"} font-semibold hover:text-highlight`}
                        href="/referenzen">Referenzen</a>
-                    <a class={`${currentPath.includes("leistungen") ? "underline-offset-4 underline" : "text-gray-600"} font-semibold`}
+                    <a class={`${currentPath.includes("leistungen") ? "underline-offset-4 underline text-highlight" : "text-gray-600"} font-semibold hover:text-highlight`}
                        href="/leistungen">Leistungen</a>
                 </div>
             </div>
         </nav>
     </header>
-    <div
-            id="scroll-progress-indicator"
-            class="absolute bottom-0 left-0 h-1 bg-highlight transition-all duration-300 ease-out"
-            role="progressbar"
-            aria-valuenow={0}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-label="Scrolling position indicator"
-    />
 </div>
-
-<script>
-    const handleScroll = () => {
-        const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const currentProgress = window.scrollY;
-        let elem = document.getElementById("scroll-progress-indicator");
-
-        if (elem) {
-            console.log(elem)
-            elem.style.width = ((currentProgress / totalScroll) * 100).toString();
-            console.log("scrollPercentage", (currentProgress / totalScroll) * 100);
-        }
-    };
-    window.addEventListener("scroll", handleScroll);
-</script>

@@ -1,25 +1,24 @@
 ---
-import {getCollection} from "astro:content";
+import { getCollection } from "astro:content";
+import { marked } from "marked";
 import SectionWrapper from "./SectionWrapper.astro";
-import {marked} from "marked";
 
+const {bgSecondary} = Astro.props;
 const [benefit] = await getCollection('benefit');
 
 const content = benefit.data.cta_message ? marked.parse(benefit.data.cta_message) : undefined;
 
 ---
 
-<SectionWrapper>
-    <div class="container">
+<SectionWrapper bgSecondary={bgSecondary} >
+
         <div class="md:flex-row items-center">
             <div class="w-full" style="opacity: 1; transform: none;">
                 <h3 class="mb-4 text-2xl font-bold">{benefit.data.cta_title}</h3>
-                <div class="mb-6">
-                    <div class="w-full text-lg dark:prose-invert">
-                        <article set:html={content}/>
-                    </div>
+                <div class="prose w-full text-lg dark:prose-invert">
+                    <article set:html={content}/>
                 </div>
             </div>
         </div>
-    </div>
+
 </SectionWrapper>

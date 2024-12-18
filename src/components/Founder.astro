@@ -1,20 +1,18 @@
 ---
-import {marked} from "marked";
-import {Image} from 'astro:assets';
+import { Image } from 'astro:assets';
+import { marked } from "marked";
 import SectionWrapper from "./SectionWrapper.astro";
 
-const {title, message, image} = Astro.props;
+const {title, message, image, bgSecondary} = Astro.props;
 
 const content = marked.parse(message);
 ---
 
-<SectionWrapper>
-    <div class="container">
-        <section class="overflow-hidden" style="opacity: 1; transform: none;">
-            <div class="section-sm container mx-auto px-4" style="opacity: 1; transform: none;">
-                <div class="flex flex-col items-center gap-16 md:flex-row">
-                    <div class="h-64 w-64 rounded-full overflow-hidden">
-                        <Image src={image} alt={image} inferSize width={800} height={800} />
+<SectionWrapper bgSecondary={bgSecondary} borderBottom={true}>
+
+                <div class="flex flex-col items-center gap-16 lg:flex-row overflow-hidden">
+                    <div class="w-1/2 lg:w-1/4 rounded-full overflow-hidden">
+                        <Image class="h-full w-full" src={image} alt={image} inferSize width={800} height={800} />
                     </div>
                     <div class="mx-auto lg:mx-0"><h2 class="text-3xl font-bold leading-9">{title}</h2>
                         <div class="prose mt-4 w-full max-w-full text-base leading-6 text-muted dark:prose-invert">
@@ -24,7 +22,5 @@ const content = marked.parse(message);
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
+
 </SectionWrapper>

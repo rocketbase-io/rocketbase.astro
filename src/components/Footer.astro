@@ -1,13 +1,13 @@
 ---
-import {Image} from "astro:assets";
-import { Github, Xing, Linkedin } from 'simple-icons-astro'
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import { Github, Linkedin, Xing } from 'simple-icons-astro';
 import logo from '../assets/logo.svg';
-import {Icon} from "astro-icon/components";
 
 const year = new Date().getFullYear()
 const iconClasses = "text-gray-600 hover:text-black dark:hover:text-white duration-300 w-8 h-8"
 ---
-<footer class="mt-auto border-t border-border bg-background py-12 text-primary">
+<footer class="mt-auto border-t border-border bg-background text-primary py-24">
     <div class="container mx-auto flex flex-col flex-wrap gap-8 py-8 sm:flex-row lg:gap-32">
         <div class="flex flex-col gap-4"><a class="flex items-center" href="/de">
             <picture class="w-80">

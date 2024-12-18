@@ -1,7 +1,7 @@
 ---
 import config from '@config/config.json';
-import {marked} from "marked";
-import {Image} from 'astro:assets';
+import { Image } from 'astro:assets';
+import { marked } from "marked";
 
 const {title, message, image} = Astro.props;
 
@@ -16,13 +16,13 @@ const content = message ? marked.parse(message) : undefined;
     {(title || content) && (
 
             <div class="container absolute top-0 left-0 right-0 flex h-full flex-col items-center justify-center gap-8 text-center text-white">
-                <h1 class="font-sans text-md text-5xl font-semibol lg:font-bold tracking-tighter lg:max-w-5xl lg:text-7xl xl:text-[5.125rem]">
+                <h1 class="font-sans text-md font-bold tracking-tighter lg:max-w-5xl text-2xl md:text-4xl lg:text-7xl xl:text-[5.125rem]">
                     {title}
                 </h1>
                 <div class="max-w-4xl text-lg font-normal leading-8 text-white">
                     <article set:html={content}/>
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="flex flex-wrap items-center gap-2">
                     <a href={config.bookMeeting} class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background text-secondary-foreground shadow-sm hover:bg-accent hover:text-accent-foreground h-10 rounded-md mt-4 px-4 sm:px-6">
                         Kontakt aufnehmen
                     </a>

@@ -1,7 +1,7 @@
 ---
-import {Image} from 'astro:assets';
-import {getCollection} from "astro:content";
-import {buildImageUrl} from "@lib/directus";
+import { buildImageUrl } from "@lib/directus";
+import { Image } from 'astro:assets';
+import { getCollection } from "astro:content";
 import SectionWrapper from "./SectionWrapper.astro";
 
 interface Props {
@@ -40,20 +40,20 @@ const testimonials = await getCollection('testimonial');
           "isInfiniteLoop": true,
           "showDots": false
         }' class="relative">
-        <div class="hs-carousel w-full overflow-hidden rounded-lg">
-            <div class="relative h-96 -mx-1">
+        <div class="hs-carousel w-full rounded-lg overflow-hidden">
+            <div class="relative h-[560px] -mx-1">
                 <div class="h-full hs-carousel-body absolute top-0 bottom-0 start-0 flex gap-4 items-center flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing">
                     {testimonials.map(t => {
                         return (
                                 <div class="h-full flex justify-center items-center hs-carousel-slide p-2 object-contain hover:grayscale-0">
                                     <div class="h-full flex flex-col rounded-2xl border p-6 shadow-lg ring-1 ring-gray-900/5 hover:ring-highlight bg-secondary">
                                         { t.data.customer?.logo && (
-                                            <div class="relative flex justify-center items-center h-26 overflow-hidden">
+                                            <div class="relative flex justify-center items-center h-[160px] py-20">
                                                 <Image src={buildImageUrl(t.data.customer.logo)} alt={t.data.customer.name} inferSize width={t.data.customer.logo.width ?? 200} height={t.data.customer.logo.height ?? 100}/>
                                             </div>
                                         )}
                                         <figure class="mt-2 flex flex-auto flex-col justify-between">
-                                            <blockquote class="p-4 pt-0 text-base italic leading-8">
+                                             <blockquote class="p-4 pt-0 text-base italic leading-8">
                                                 <p>“{t.data.message}”</p>
                                             </blockquote>
                                             <figcaption class="mt-2 flex items-center gap-x-4">

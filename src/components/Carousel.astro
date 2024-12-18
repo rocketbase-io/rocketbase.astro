@@ -1,14 +1,15 @@
 ---
-import {Image} from 'astro:assets';
-import {getCollection} from "astro:content";
-import {buildImageUrl} from "../lib/directus";
+import { Image } from 'astro:assets';
+import { getCollection } from "astro:content";
+import { buildImageUrl } from "../lib/directus";
 import SectionWrapper from "./SectionWrapper.astro";
 
-const {title} = Astro.props;
+const {title, bgSecondary} = Astro.props;
+
 const customers = await getCollection('customer');
 ---
 
-<SectionWrapper small>
+<SectionWrapper bgSecondary={bgSecondary} borderBottom={true} small>
     {
         title && (
                     <div class="container mx-auto mb bg-background px-6 lg:px-8">

@@ -1,10 +1,11 @@
 ---
-import {getCollection} from "astro:content";
+import { getCollection } from "astro:content";
 
-import Layout from '@layouts/Layout.astro';
 import CarouselTestimonials from "@components/CarouselTestimonials.astro";
-import ReferenceList from "@components/reference/ReferenceList.astro";
+import Contact from "@components/Contact.astro";
 import ReferenceHero from "@components/reference/ReferenceHero.astro";
+import ReferenceList from "@components/reference/ReferenceList.astro";
+import Layout from '@layouts/Layout.astro';
 
 const [reference] = await getCollection('reference');
 ---
@@ -16,5 +17,7 @@ const [reference] = await getCollection('reference');
 	<CarouselTestimonials title={reference.data.hero_title} subtitle={reference.data.hero_message} />
 
 	<ReferenceList title={reference.data.reference_title} subtitle={reference.data.reference_message} />
+
+	<Contact />
 
 </Layout>

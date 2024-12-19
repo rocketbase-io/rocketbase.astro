@@ -1,6 +1,6 @@
 ---
+import type { questionType } from "@content/directus";
 import SectionWrapper from "../SectionWrapper.astro";
-import type {questionType} from "@content/directus";
 
 interface Props  {
     title?: string;
@@ -11,16 +11,15 @@ const { title, questions } = Astro.props;
 
 ---
 
-<SectionWrapper>
-    <div class="container mx-auto">
-        <div class="flex flex-col items-center justify-center space-y-4 text-center">
+<SectionWrapper borderBottom={true}>
+        <div class="flex flex-col items-center justify-center space-y-4 text-center pb-12">
             <h2 class="text-2xl font-bold tracking-tight text-foreground">{title}</h2>
         </div>
         <div class="hs-accordion-group">
-            {questions?.map((q, idx) => {
+            {questions?.map((q, idx, array) => {
                 return (
-                        <div class={`hs-accordion ${idx === 0 && "active"} hs-accordion-active:bg-gray-100 rounded-xl p-6 dark:hs-accordion-active:bg-white/10`} id={`${q.question}-${idx}-heading`}>
-                            <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400" aria-expanded=`${idx === 0 ? "true" : "false"}` aria-controls={`${q.question}-${idx}-collapse`}>
+                        <div class={`hs-accordion ${idx === 0 && "active"} hs-accordion-active:bg-gray-100 rounded-xl p-6 ${idx === array.length - 1 && "pb-0"} dark:hs-accordion-active:bg-white/10`} id={`${q.question}-${idx}-heading`}>
+                            <button class={`hs-accordion-toggle group ${idx === array.length - 1 ? "pb-0" : "pb-3"} inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400`} aria-expanded=`${idx === 0 ? "true" : "false"}` aria-controls={`${q.question}-${idx}-collapse`}>
                                 {q.question}
                                 <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                                 <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
@@ -34,5 +33,4 @@ const { title, questions } = Astro.props;
                 )
             })}
         </div>
-    </div>
 </SectionWrapper>

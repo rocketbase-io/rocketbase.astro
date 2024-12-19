@@ -1,9 +1,9 @@
 ---
+import { buildImageUrl } from "@lib/directus";
+import { Image } from 'astro:assets';
+import { getCollection } from "astro:content";
+import { marked } from "marked";
 import SectionWrapper from "../SectionWrapper.astro";
-import {buildImageUrl} from "@lib/directus";
-import {Image} from 'astro:assets';
-import {marked} from "marked";
-import {getCollection} from "astro:content";
 
 interface Props  {
     title?: string;
@@ -14,19 +14,19 @@ const examples = await getCollection('example');
 const {title, subtitle} = Astro.props;
 ---
 
-<SectionWrapper>
-    <div class="container mx-auto mb px-6 lg:px-8">
+<SectionWrapper borderBottom={true}>
+    <div class="container mx-auto mb px-6 lg:px-8 pb-8">
         <div class="mx-auto max-w-5xl text-center">
             {title && <h2 class="mt-2 text-3xl font-bold tracking-tight md:text-4xl xl:text-5xl">{title}</h2>}
             {subtitle && <p class="mt-6 text-lg leading-8 text-muted">{subtitle}</p>}
         </div>
     </div>
-    <div class="gap flex flex-col">
+    <div class="flex flex-col gap-36">
         {examples.map((e, index: number) => {
             const content = e.data.hero_message ? marked.parse(e.data.hero_message) : undefined;
             const imageLeft = index % 2 === 0;
             return (
-                    <div class={`flex flex-col gap-16 ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"} section items-center`}>
+                    <div class={`flex flex-col gap-16 ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"} items-center`}>
                         <div class="mb-8 w-full md:mb-0 md:w-1/2" style="transform: none;">
                             <a href={`/leistungen/${e.data.slug}`}>
                                 <div class="relative block overflow-hidden rounded-xl transition-all duration-300"

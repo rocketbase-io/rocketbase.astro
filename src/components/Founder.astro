@@ -16,8 +16,8 @@ const content = marked.parse(message);
                     </div>
                     <div class="mx-auto lg:mx-0"><h2 class="text-3xl font-bold leading-9">{title}</h2>
                         <div class="prose mt-4 w-full max-w-full text-base leading-6 text-muted dark:prose-invert">
-                            <div class="prose w-full text-lg dark:prose-invert">
-                                <article set:html={content}/>
+                            <div class="prose w-full text-lg dark:prose-invert overflow-hidden">
+                                <article class="founder-message-container" set:html={content}/>
                             </div>
                         </div>
                     </div>

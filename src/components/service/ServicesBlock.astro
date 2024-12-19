@@ -22,7 +22,7 @@ const {title, subtitle, sections} = Astro.props;
             {subtitle && <p class="mt-6 text-lg leading-8 text-muted">{subtitle}</p>}
         </div>
     </div>
-    <div class="space-y-32">
+    <div class="space-y-20">
         {sections && sections.map((s, index: number) => {
 
             const content = s.text ? marked.parse(s.text) : undefined;

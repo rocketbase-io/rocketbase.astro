@@ -13,7 +13,7 @@ const {title, subtitle} = Astro.props;
 const testimonials = await getCollection('testimonial');
 ---
 
-<SectionWrapper>
+<SectionWrapper borderBottom={true}>
     {
         title && (
                     <div class="container mx-auto mb bg-background px-6 lg:px-8">
@@ -29,7 +29,8 @@ const testimonials = await getCollection('testimonial');
           "loadingClasses": "opacity-0",
           "slidesQty": {
             "xs": 1,
-            "lg": 3
+            "lg": 2,
+            "xl": 3
           },
           "infinite": true,
           "currentIndex": 0,
@@ -41,19 +42,19 @@ const testimonials = await getCollection('testimonial');
           "showDots": false
         }' class="relative">
         <div class="hs-carousel w-full rounded-lg overflow-hidden">
-            <div class="relative h-[560px] -mx-1">
-                <div class="h-full hs-carousel-body absolute top-0 bottom-0 start-0 flex gap-4 items-center flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing">
+            <div class="relative -mx-1">
+                <div class="hs-carousel-body flex flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing">
                     {testimonials.map(t => {
                         return (
-                                <div class="h-full flex justify-center items-center hs-carousel-slide p-2 object-contain hover:grayscale-0">
-                                    <div class="h-full flex flex-col rounded-2xl border p-6 shadow-lg ring-1 ring-gray-900/5 hover:ring-highlight bg-secondary">
+                                <div class="hs-carousel-slide p-2">
+                                    <div class="h-full w-full flex-auto flex flex-col justify-start rounded-2xl border p-6 shadow bg-secondary">
                                         { t.data.customer?.logo && (
                                             <div class="relative flex justify-center items-center h-[160px] py-20">
                                                 <Image src={buildImageUrl(t.data.customer.logo)} alt={t.data.customer.name} inferSize width={t.data.customer.logo.width ?? 200} height={t.data.customer.logo.height ?? 100}/>
                                             </div>
                                         )}
                                         <figure class="mt-2 flex flex-auto flex-col justify-between">
-                                             <blockquote class="p-4 pt-0 text-base italic leading-8">
+                                             <blockquote class="p-4 text-sm italic leading-8">
                                                 <p>“{t.data.message}”</p>
                                             </blockquote>
                                             <figcaption class="mt-2 flex items-center gap-x-4">
@@ -62,7 +63,7 @@ const testimonials = await getCollection('testimonial');
                                                 </div>
                                                 <div class="text-base">
                                                     <div class="text-sm font-semibold">{t.data.name}</div>
-                                                    <div class="mt-1 text-sm text-muted">{t.data.position}</div>
+                                                    <div class="mt-1 text-sm text-muted truncate">{t.data.position}</div>
                                                 </div>
                                             </figcaption>
                                         </figure>

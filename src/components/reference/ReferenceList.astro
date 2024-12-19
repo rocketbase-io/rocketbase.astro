@@ -1,8 +1,8 @@
 ---
-import {getCollection} from "astro:content";
+import { buildImageUrl } from "@lib/directus";
+import { Image } from 'astro:assets';
+import { getCollection } from "astro:content";
 import SectionWrapper from "./../SectionWrapper.astro";
-import {Image} from 'astro:assets';
-import {buildImageUrl} from "@lib/directus";
 
 const { title, subtitle } = Astro.props;
 
@@ -13,7 +13,7 @@ const references = await getCollection('references');
 
     <div class="px-6 xl:px-8 pb-6">
         <div class="mx-auto max-w-5xl text-center">
-            {title && <h2 class="mt-2 text-3xl font-bold tracking-tight md:text-4xl xl:text-5xl">{title}</h2>}
+            {title && <h2 class="text-3xl font-bold tracking-tight md:text-4xl xl:text-5xl">{title}</h2>}
             {subtitle && <p class="mt-6 text-lg leading-8 text-muted">{subtitle}</p>}
         </div>
     </div>

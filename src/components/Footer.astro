@@ -7,7 +7,7 @@ import logo from '../assets/logo.svg';
 const year = new Date().getFullYear()
 const iconClasses = "text-gray-600 hover:text-black dark:hover:text-white duration-300 w-8 h-8"
 ---
-<footer class="mt-auto border-t border-border bg-background text-primary py-24">
+<footer class="container mt-auto border-t border-border bg-background text-primary pt-24 pb-12 px-8 md:px-16">
     <div class="container mx-auto flex flex-col flex-wrap gap-8 sm:flex-row lg:gap-32">
         <div class="flex flex-col gap-4"><a class="flex items-center" href="/de">
             <picture class="w-80">
@@ -22,25 +22,25 @@ const iconClasses = "text-gray-600 hover:text-black dark:hover:text-white durati
         </div>
         <div class="flex gap-20">
             <div class="flex flex-col items-start gap-4">
-                <div class="italic">Seiten</div>
+                <div class="italic font-bold">Seiten</div>
                 <nav class="flex flex-col gap-4 text-sm font-medium">
-                    <a href="/referenzen">Referenzen</a>
-                    <a href="/leistungen">Leistungen</a>
+                    <a href="/referenzen" class="hover:text-highlight">Referenzen</a>
+                    <a href="/leistungen" class="hover:text-highlight">Leistungen</a>
                 </nav>
             </div>
             <div class="flex flex-col items-start gap-4">
-                <div class="italic">Profile</div>
+                <div class="italic font-bold">Profile</div>
                 <nav class="flex flex-col gap-4 text-sm font-medium">
-                    <a target="_blank" href="https://hub.docker.com/r/rocketbaseio/">Docker-Hub</a>
-                    <a target="_blank" href="https://github.com/rocketbase-io">Github</a>
-                    <a target="_blank" href="https://www.linkedin.com/company/rocketbase-io/">LinkedIn</a>
-                    <a target="_blank" href="https://www.npmjs.com/~rocketbase-io">npmjs.com</a>
-                    <a target="_blank" href="https://www.xing.com/pages/rocketbase-iosoftwareproductionsgmbh">Xing</a>
+                    <a target="_blank" class="hover:text-highlight" href="https://hub.docker.com/r/rocketbaseio/">Docker-Hub</a>
+                    <a target="_blank" class="hover:text-highlight" href="https://github.com/rocketbase-io">Github</a>
+                    <a target="_blank" class="hover:text-highlight" href="https://www.linkedin.com/company/rocketbase-io/">LinkedIn</a>
+                    <a target="_blank" class="hover:text-highlight" href="https://www.npmjs.com/~rocketbase-io">npmjs.com</a>
+                    <a target="_blank" class="hover:text-highlight" href="https://www.xing.com/pages/rocketbase-iosoftwareproductionsgmbh">Xing</a>
                 </nav>
             </div>
         </div>
     </div>
-    <div class="container mx-auto flex flex-col justify-between gap-2 py-4 sm:flex-row lg:items-center">
+    <div class="container mx-auto flex flex-col justify-between gap-8 pt-20 sm:flex-row sm:items-center">
         <div class="flex gap-6"><a href="/imprint">Impressum</a><a href="/privacy">Datenschutz</a></div>
         <div>
             <div class="flex gap-6 dark:invert-0">

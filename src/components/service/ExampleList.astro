@@ -21,13 +21,13 @@ const {title, subtitle} = Astro.props;
             {subtitle && <p class="mt-6 text-lg leading-8 text-muted">{subtitle}</p>}
         </div>
     </div>
-    <div class="flex flex-col gap-36">
-        {examples.map((e, index: number) => {
+    <div class="flex flex-col gap-20">
+        {examples.map((e, index: number, array) => {
             const content = e.data.hero_message ? marked.parse(e.data.hero_message) : undefined;
             const imageLeft = index % 2 === 0;
             return (
-                    <div class={`flex flex-col gap-16 ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"} items-center`}>
-                        <div class="mb-8 w-full md:mb-0 md:w-1/2" style="transform: none;">
+                    <div class={`flex flex-col gap-12 ${imageLeft ? "lg:flex-row" : "lg:flex-row-reverse"} items-center ${index !== array.length - 1 ? "border-b pb-20" : ""}`}>
+                        <div class="w-full lg:mb-0 lg:w-1/2" style="transform: none;">
                             <a href={`/leistungen/${e.data.slug}`}>
                                 <div class="relative block overflow-hidden rounded-xl transition-all duration-300"
                                      aria-label={e.data.slug}>
@@ -42,7 +42,7 @@ const {title, subtitle} = Astro.props;
                                 </div>
                             </a>
                         </div>
-                        <div class={`md:w-1/2 ${imageLeft ? "md:pl-12" : "md:pr-12"} w-full`}
+                        <div class={`lg:w-1/2 ${imageLeft ? "lg:pl-12" : "lg:pr-12"} w-full`}
                              style="opacity: 1; transform: none;">
                             <h3 class="mb-4 text-2xl font-bold">{e.data.hero_title}</h3>
                             <div class="mb-6">

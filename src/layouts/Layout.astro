@@ -62,6 +62,10 @@ const { title, description, image, lang } = Astro.props;
 			else if (html && isDarkOrAuto && !html.classList.contains('dark')) html.classList.add('dark');
 			else if (html && isLightOrAuto && !html.classList.contains('light')) html.classList.add('light');
 		</script>
+
+		<script type="module" src="/cookieconsent-config.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css" />
+		<script defer data-domain="rocketbase.io" src="https://plausible.io/js/script.js"></script>
 	</head>
 	<body class="min-h-screen bg-background antialiased">
 		<div class="flex h-full min-h-screen flex-col overflow-x-clip">
@@ -69,5 +73,23 @@ const { title, description, image, lang } = Astro.props;
 			<slot />
 			<Footer />
 		</div>
+
+		<script type="text/plain"
+			data-category="marketing">
+			_linkedin_partner_id = "5204394";
+			window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+			window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+		</script>
+		<script type="text/plain"
+			data-category="marketing">
+			(function(l) {
+			if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+				window.lintrk.q=[]}
+			var s = document.getElementsByTagName("script")[0];
+			var b = document.createElement("script");
+			b.type = "text/javascript";b.async = true;
+			b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+			s.parentNode.insertBefore(b, s);})(window.lintrk);
+		</script>
 	</body>
 </html>

@@ -1,0 +1,20 @@
+---
+import Layout from '@layouts/Layout.astro';
+import {getCollection} from 'astro:content';
+import Contact from "../../components/Contact.astro";
+import OfferSteps from "../../components/offer/OfferSteps.astro";
+import ExampleList from "../../components/service/ExampleList.astro";
+import OfferStepList from "../../components/offer/OfferStepList.astro";
+
+const [offer] = await getCollection('offer');
+---
+
+<Layout title={"Kontakt"}
+        description={offer.data?.hero_message}
+        image="leistungen.png">
+
+    <OfferSteps />
+
+    <Contact />
+
+</Layout>

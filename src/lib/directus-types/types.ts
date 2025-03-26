@@ -664,3 +664,29 @@ export type CustomDirectusTypes = {
   testimonials: Testimonials[];
   testimonials_translations: TestimonialsTranslations[];
 };
+
+export type PageOffer = {
+  id: number;
+  translations: PageOfferTranslations[];
+};
+
+
+export type PageOfferTranslations = {
+  id: number;
+  page_offer_id?: number | PageOffer;
+  languages_code?: string | Languages;
+  hero_message?: string;
+  hero_title?: string;
+  offer_steps?: {
+    caption: string;
+    description: string;
+  }[];
+  conclusion?: string;
+  individual_development_title?: string;
+  individual_development_bulletpoints?: {
+    caption: string;
+    description: string;
+  }[];
+  hosting_title?: string;
+  hosting_message?: string;
+};

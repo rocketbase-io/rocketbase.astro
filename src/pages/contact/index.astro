@@ -3,8 +3,8 @@ import Layout from '@layouts/Layout.astro';
 import {getCollection} from 'astro:content';
 import Contact from "../../components/Contact.astro";
 import OfferSteps from "../../components/offer/OfferSteps.astro";
-import ExampleList from "../../components/service/ExampleList.astro";
-import OfferStepList from "../../components/offer/OfferStepList.astro";
+import OfferHosting from "../../components/offer/OfferHosting.astro";
+import OfferIndividualDevelopment from "../../components/offer/OfferIndividualDevelopment.astro";
 
 const [offer] = await getCollection('offer');
 ---
@@ -14,7 +14,7 @@ const [offer] = await getCollection('offer');
         image="leistungen.png">
 
     <OfferSteps />
-
     <Contact />
-
+    <OfferIndividualDevelopment />
+    <OfferHosting />
 </Layout>

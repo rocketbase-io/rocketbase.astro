@@ -675,11 +675,12 @@ export type PageOfferTranslations = {
   id: number;
   page_offer_id?: number | PageOffer;
   languages_code?: string | Languages;
-  hero_message?: string;
-  hero_title?: string;
+  offer_title?: string;
+  offer_description?: string;
   offer_steps?: {
     caption: string;
     description: string;
+    icon: string;
   }[];
   conclusion?: string;
   individual_development_title?: string;
@@ -689,4 +690,5 @@ export type PageOfferTranslations = {
   }[];
   hosting_title?: string;
   hosting_message?: string;
+
 };

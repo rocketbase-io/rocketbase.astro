@@ -1,0 +1,21 @@
+---
+import SectionWrapper from "../SectionWrapper.astro";
+import {getCollection} from "astro:content";
+import {marked} from "marked";
+import { Image } from 'astro:assets';
+
+const [offer] = await getCollection('offer');
+---
+
+
+<SectionWrapper borderBottom={true}>
+    <div class="container mx-auto mb px-6 lg:px-8 pb-8">
+        <div class="mx-auto max-w-5xl">
+            <h2 class="text-2xl font-bold tracking-tight sm:text-3xl text-center pb-8">{offer.data?.hosting_title}</h2>
+            <div class="prose w-full text-lg dark:prose-invert">
+                <Image class="p-3 mx-auto float-none lg:float-right" src={"/images/hosting.png"} alt={"/images/hosting.png"} inferSize width={400} height={400} />
+                <article set:html={offer.data?.hosting_message ? marked.parse(offer.data.hosting_message) : undefined}/>
+            </div>
+        </div>
+    </div>
+</SectionWrapper>

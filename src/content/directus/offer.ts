@@ -6,13 +6,14 @@ import {defaultQuery} from "../shared.ts";
 
 export const offerSchema = z.object({
     languages_code: z.string().optional(),
-    hero_title: z.string().optional(),
-    hero_message: z.string().optional(),
+    offer_title: z.string().optional(),
+    offer_description: z.string().optional(),
     offer_steps: z
         .array(
             z.object({
                 caption: z.string(),
-                description: z.string()
+                description: z.string(),
+                icon: z.string().optional(),
             })
         )
         .optional(),

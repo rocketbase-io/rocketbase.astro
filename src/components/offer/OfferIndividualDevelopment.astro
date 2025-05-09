@@ -15,7 +15,7 @@ const [offer] = await getCollection('offer');
     <dl class="col-span-2 flex-auto space-y-4 border-gray-900/10">
         <div>
             <div class="flex flex-col lg:flex-row gap-8">
-                {offer.data?.individual_development_bulletpoints.map(b => {
+                {offer.data?.individual_development_bulletpoints?.map(b => {
                     return <div class="rounded-lg border bg-primary-foreground p-4 text-lg shadow">
                         <dt class="text-center font-bold text-highlight pb-3">{b.caption}</dt>
                         <dd class="tracking-tight text-muted">

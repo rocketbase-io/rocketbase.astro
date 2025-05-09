@@ -1,5 +1,4 @@
-import {homeCollection, customerCollection, testimonialCollection, exampleCollection, serviceCollection, referenceCollection, referencesCollection, benefitCollection, postsCollection} from "./directus";
-import {offerCollection} from "@content/directus/offer.ts";
+import {homeCollection, customerCollection, testimonialCollection, exampleCollection, serviceCollection, referenceCollection, referencesCollection, benefitCollection, postsCollection, offerCollection} from "./directus";
 
 export const collections = {
     home: homeCollection, // Page

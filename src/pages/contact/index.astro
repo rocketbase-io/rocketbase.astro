@@ -10,7 +10,7 @@ const [offer] = await getCollection('offer');
 ---
 
 <Layout title={"Kontakt"}
-        description={offer.data?.hero_message}
+        description={offer.data?.offer_description??''}
         image="leistungen.png">
 
     <OfferSteps />

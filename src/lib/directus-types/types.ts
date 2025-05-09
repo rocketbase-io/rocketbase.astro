@@ -663,6 +663,8 @@ export type CustomDirectusTypes = {
   techstacks: Techstacks[];
   testimonials: Testimonials[];
   testimonials_translations: TestimonialsTranslations[];
+  page_offer: PageOffer;
+  page_offer_translations: PageOfferTranslations[];
 };
 
 export type PageOffer = {

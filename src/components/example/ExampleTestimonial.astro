@@ -28,9 +28,9 @@ const selected = references.filter(r => referenceIds.includes(r.id))
                                     <div class="flex items-center gap-8 md:flex-row flex-col">
                                         {testimonial?.data.teaser && (
                                                 <div class="w-full lg:w-1/2">
-                                                    <Image src={buildImageUrl(testimonial.data.teaser)}
-                                                           alt={testimonial.data.teaser.title ?? "teaser-image"} inferSize
-                                                           width={testimonial.data.teaser.width ?? 24}
+                                                    <Image src={buildImageUrl(testimonial.data.teaser, 600)}
+                                                           alt={testimonial.data.teaser.title ?? "teaser-image"}
+                                                           inferSize={true} width={testimonial.data.teaser.width ?? 24}
                                                            height={testimonial.data.teaser.height ?? 24}/>
                                                 </div>
                                         )}

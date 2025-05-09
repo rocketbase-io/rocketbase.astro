@@ -32,7 +32,7 @@ const content = message ? marked.parse(message) : undefined;
         {image &&
             (
                     <div class="shadow rounded-lg border-4 overflow-hidden transition-all duration-500 ease-out hover:scale-105 is-visible">
-                        <Image class="w-full"  src={buildImageUrl(image)} alt={image.title ?? "image"} inferSize/>
+                        <Image class="w-full" src={buildImageUrl(image, 1200)} alt={image.title ?? "image"} inferSize={true} />
                     </div>
             )
         }

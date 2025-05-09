@@ -35,8 +35,7 @@ const {title, subtitle} = Astro.props;
                                          style="opacity: 0;"></div>
                                     <div class="relative w-full overflow-hidden rounded-xl shadow-lg border">
                                         {e.data.hero_image &&
-                                        <Image class="" src={buildImageUrl(e.data.hero_image)} alt={title||'hero-image'} inferSize
-                                               width={e.data.hero_image.width!!} height={e.data.hero_image.height!!}/>
+                                        <Image class="" src={buildImageUrl(e.data.hero_image, 600)} alt={title||'hero-image'} inferSize={true} width={e.data.hero_image.width!!} height={e.data.hero_image.height!!}/>
                                         }
                                     </div>
                                 </div>

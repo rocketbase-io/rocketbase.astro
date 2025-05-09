@@ -15,9 +15,9 @@ const summary = reviewSummary ? marked.parse(reviewSummary) : undefined;
         <Image
                 class="h-52 w-52 max-w-none rounded-full object-fill md:max-w-none"
                 alt={reviewAvatar}
-                src={buildImageUrl(reviewAvatar)}
-                width={200}
-                height={200}
+                src={buildImageUrl(reviewAvatar, 400)}
+                width={400}
+                height={400}
         />
         <div class="speech-bubble text-lg mx-auto rounded-lg border bg-secondary p-8 text-muted shadow lg:mx-0">
             <article set:html={summary}/>

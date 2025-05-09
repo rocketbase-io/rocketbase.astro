@@ -28,7 +28,7 @@ const {title, techstack} = Astro.props;
                     >
                         <div class="flex rounded-l-md bg-opacity-20 p-3">
                             {t.icon &&
-                            <Image style={`color: ${t.color}`} src={buildImageUrl(t.icon)} alt={"image"} inferSize width={48} height={48} />
+                            <Image style={`color: ${t.color}`} src={buildImageUrl(t.icon, 128)} alt={"image"} inferSize={true} width={48} height={48} />
                             }
                         </div>
                         <div

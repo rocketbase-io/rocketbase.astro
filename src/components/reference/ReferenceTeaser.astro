@@ -18,8 +18,7 @@ const {screens} = Astro.props;
                 {screens && screens.map((t, idx) => {
                     return (
                             <div class="relative flex flex-col gap-4 w-full flex-auto justify-center rounded-lg text-center">
-                                <Image class="border shadow rounded-lg" src={buildImageUrl(t)} alt={t.title||`screen-${idx}`} inferSize
-                                       width={t.width!!} height={t.height!!} />
+                                <Image class="border shadow rounded-lg" src={buildImageUrl(t, 600)} alt={t.title||`screen-${idx}`} inferSize={true} width={t.width!!} height={t.height!!} />
                                 <div class="text-base text-muted font-semibold">{t.title}</div>
                             </div>
                     )

@@ -23,7 +23,7 @@ const references = await getCollection('references');
             return <div class={`relative flex ${left ? "xl:flex-row-reverse" : "xl:flex-row"} flex-col bg-card border rounded-xl shadow-sm overflow-hidden `}>
                 {r.data.teaser?.id &&
                         <div class="relative flex-auto w-full overflow-hidden">
-                            <Image src={buildImageUrl(r.data.teaser)} alt={r.data.teaser.id} inferSize width={1536} height={768} />
+                            <Image src={buildImageUrl(r.data.teaser, 800)} alt={r.data.teaser.id} inferSize={true} width={1536} height={768} />
                         </div>
                 }
                 <div class="flex-none w-full xl:max-w-lg bg-card shadow">

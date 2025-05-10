@@ -1,6 +1,6 @@
 ---
 import config from '@config/config.json';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { marked } from "marked";
 
 const {title, message, image} = Astro.props;
@@ -10,7 +10,7 @@ const content = message ? marked.parse(message) : undefined;
 
 <div class="relative h-full overflow-hidden">
     <div class="relative inset-0 -z-10 h-[45rem]">
-        <Image class="w-full h-full object-cover blur-sm" src={image} alt={image} inferSize width={2560} height={1200} />
+        <Picture class="w-full h-full object-cover blur-sm" src={image} alt={image} inferSize={true} widths={[1920, 1280, 920, 600]} loading="eager" />
         <div class="bg-gradient-to-r from-[#6372a540]  via-[#6372a5] to-[#6372a540] absolute inset-0 h-full w-full"></div>
     </div>
     {(title || content) && (

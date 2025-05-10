@@ -9,6 +9,11 @@ import Layout from '@layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import Contact from "../components/Contact.astro";
 
+import hero from "../assets/hero-bg.webp";
+import services from "../assets/services.avif";
+import projectCollage from "../assets/projects_collage.avif";
+import marten from "../assets/marten.jpg";
+
 const [home] = await getCollection('home');
 
 ---
@@ -17,19 +22,19 @@ const [home] = await getCollection('home');
 		description="Entdecken Sie erfolgreiche Softwareprojekte von RocketBase. Lassen Sie sich von unseren individuellen Lösungen und zufriedenen Kunden inspirieren. Gemeinsam realisieren wir Ihre Vision!"
 		image="index.png">
 
-	<Hero title={home.data.hero_title} message={home.data.hero_message} image={"/images/hero-bg.webp"} />
+	<Hero title={home.data.hero_title} message={home.data.hero_message} image={hero} />
 
 	<Carousel title={home.data.company_title} />
 
-    <MediaContent title={home.data.service_title}  subTitle={home.data.service_subtitle} image={"/images/services.avif"} message={home.data.service_teaser} buttonText={"Mehr erfahren"} buttonLink="/leistungen" imageLeft />
+    <MediaContent title={home.data.service_title}  subTitle={home.data.service_subtitle} image={services} message={home.data.service_teaser} buttonText={"Mehr erfahren"} buttonLink="/leistungen" imageLeft />
 
 	<ServicesOverview bgSecondary={true} />
 
-	<MediaContent title={home.data.reference_title}  subTitle={home.data.reference_subtitle} image={"/images/projects_collage.avif"} message={home.data.reference_teaser} buttonText={"Mehr erfahren"} buttonLink="/referenzen" imageLeft />
+	<MediaContent title={home.data.reference_title}  subTitle={home.data.reference_subtitle} image={projectCollage} message={home.data.reference_teaser} buttonText={"Mehr erfahren"} buttonLink="/referenzen" imageLeft />
 
 	<CTASection bgSecondary={true} />
 
-	<Founder title={home.data.founder_title} message={home.data.founder_text} image={"/images/marten.jpg"} />
+	<Founder title={home.data.founder_title} message={home.data.founder_text} image={marten} />
 
 	<Contact />
 

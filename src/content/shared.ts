@@ -43,6 +43,7 @@ export const directusFileSchema = directusFile.pick({
     description: true,
     width: true,
     height: true,
+    type: true
 }).partial();
 
 export type directusFileType = z.infer<typeof directusFileSchema>;

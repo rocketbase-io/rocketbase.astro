@@ -1,6 +1,5 @@
 ---
-import {Image} from "astro:assets";
-import {buildImageUrl} from "@lib/directus";
+import RemoteImage from "@components/RemoteImage.astro";
 import type {referencesType} from "../../content/directus";
 
 interface Props  {
@@ -28,7 +27,7 @@ const {title, techstack} = Astro.props;
                     >
                         <div class="flex rounded-l-md bg-opacity-20 p-3">
                             {t.icon &&
-                            <Image style={`color: ${t.color}`} src={buildImageUrl(t.icon, 128)} alt={"image"} inferSize={true} width={48} height={48} />
+                            <RemoteImage style={`color: ${t.color}`} asset={t.icon} alt={"image"} widths={[48, 128]} />
                             }
                         </div>
                         <div

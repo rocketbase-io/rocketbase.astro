@@ -1,6 +1,5 @@
 ---
-import { buildImageUrl } from "@lib/directus";
-import { Image } from 'astro:assets';
+import RemoteImage from "@components/RemoteImage.astro";
 import { getCollection } from "astro:content";
 import SectionWrapper from "./SectionWrapper.astro";
 
@@ -50,7 +49,7 @@ const testimonials = await getCollection('testimonial');
                                     <div class="h-full w-full flex-auto flex flex-col justify-start rounded-2xl border p-6 shadow bg-secondary">
                                         { t.data.customer?.logo && (
                                             <div class="relative flex justify-center items-center h-[160px] py-20">
-                                                <Image src={buildImageUrl(t.data.customer.logo, 200)} alt={t.data.customer.name} inferSize={true} width={t.data.customer.logo.width ?? 200} height={t.data.customer.logo.height ?? 100} />
+                                                <RemoteImage asset={t.data.customer.logo} widths={[128, 256]} />
                                             </div>
                                         )}
                                         <figure class="mt-2 flex flex-auto flex-col justify-between">
@@ -59,7 +58,7 @@ const testimonials = await getCollection('testimonial');
                                             </blockquote>
                                             <figcaption class="mt-2 flex items-center gap-x-4">
                                                 <div class="relative h-10 w-10 rounded-full overflow-hidden">
-                                                    {t.data.avatar && <Image src={buildImageUrl(t.data.avatar, 200)} alt={t.data.name} inferSize={true} width={t.data.avatar.width ?? 200} height={t.data.avatar.height ?? 200} />}
+                                                    {t.data.avatar && <RemoteImage asset={t.data.avatar} alt={t.data.name} widths={[128, 256]} />}
                                                 </div>
                                                 <div class="text-base">
                                                     <div class="text-sm font-semibold">{t.data.name}</div>

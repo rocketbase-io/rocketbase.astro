@@ -1,8 +1,7 @@
 ---
-import {Image} from 'astro:assets';
+import RemoteImage from "@components/RemoteImage.astro";
 import SectionWrapper from "../SectionWrapper.astro";
 import {marked} from "marked";
-import {buildImageUrl} from "../../lib/directus";
 
 const {reviewSummary, reviewAvatar, reviewBiography } = Astro.props;
 const summary = reviewSummary ? marked.parse(reviewSummary) : undefined;
@@ -12,12 +11,11 @@ const summary = reviewSummary ? marked.parse(reviewSummary) : undefined;
 <SectionWrapper>
 
     <div class="flex flex-col-reverse items-center gap-16 md:flex-row">
-        <Image
+        <RemoteImage
                 class="h-52 w-52 max-w-none rounded-full object-fill md:max-w-none"
                 alt={reviewAvatar}
-                src={buildImageUrl(reviewAvatar, 400)}
-                width={400}
-                height={400}
+                asset={reviewAvatar}
+                widths={[200, 400]}
         />
         <div class="speech-bubble text-lg mx-auto rounded-lg border bg-secondary p-8 text-muted shadow lg:mx-0">
             <article set:html={summary}/>

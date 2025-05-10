@@ -1,6 +1,5 @@
 ---
-import { buildImageUrl } from "@lib/directus";
-import { Image } from 'astro:assets';
+import RemoteImage from "@components/RemoteImage.astro";
 import { getCollection } from "astro:content";
 import { marked } from "marked";
 import SectionWrapper from "../SectionWrapper.astro";
@@ -35,7 +34,7 @@ const {title, subtitle} = Astro.props;
                                          style="opacity: 0;"></div>
                                     <div class="relative w-full overflow-hidden rounded-xl shadow-lg border">
                                         {e.data.hero_image &&
-                                        <Image class="" src={buildImageUrl(e.data.hero_image, 600)} alt={title||'hero-image'} inferSize={true} width={e.data.hero_image.width!!} height={e.data.hero_image.height!!}/>
+                                        <RemoteImage asset={e.data.hero_image} alt={title||'hero-image'} widths={[400, 800]}/>
                                         }
                                     </div>
                                 </div>

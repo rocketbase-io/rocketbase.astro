@@ -1,6 +1,5 @@
 ---
-import {Image} from 'astro:assets';
-import {buildImageUrl} from "@lib/directus";
+import RemoteImage from "@components/RemoteImage.astro";
 import type {referencesType} from "../../content/directus";
 
 interface Props  {
@@ -15,10 +14,10 @@ const {screens} = Astro.props;
         <div class="flex w-full flex-col items-center gap-2">
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full items-center gap-12">
 
-                {screens && screens.map((t, idx) => {
+                {screens && screens.map((t) => {
                     return (
                             <div class="relative flex flex-col gap-4 w-full flex-auto justify-center rounded-lg text-center">
-                                <Image class="border shadow rounded-lg" src={buildImageUrl(t, 600)} alt={t.title||`screen-${idx}`} inferSize={true} width={t.width!!} height={t.height!!} />
+                                <RemoteImage class="border shadow rounded-lg" asset={t!} widths={[200, 400, 800]} />
                                 <div class="text-base text-muted font-semibold">{t.title}</div>
                             </div>
                     )

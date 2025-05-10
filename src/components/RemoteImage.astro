@@ -1,0 +1,32 @@
+---
+import {Picture} from 'astro:assets';
+import type {directusFileType} from "@content/shared";
+import { imageMap } from "@data/images";
+
+type Props = {
+    asset: directusFileType;
+    class?: string;
+    alt?: string;
+    style?: string;
+    widths?: number[] | undefined;
+    loading?: 'eager' | 'lazy' | undefined | null;
+};
+const {asset,
+    alt,
+    ...rest} = Astro.props;
+
+if (!asset) {
+    throw new Error("RemoteImage: 'asset' is required");
+}
+
+
+const src = imageMap[asset.id!]
+---
+
+<Picture
+        src={src}
+        alt={alt??asset.description??asset.filename_disk??asset.id!}
+        inferSize={true}
+        widths={[200, 400, 800]}
+        {...rest}
+/>

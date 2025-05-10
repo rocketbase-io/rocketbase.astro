@@ -1,9 +1,10 @@
 ---
-import {Image} from 'astro:assets';
+import {Picture} from 'astro:assets';
+import references from "./../../assets/references.png";
 ---
 
 <div class="bg-neutral-900 ">
     <div class="lg:h-[50rem]">
-        <Image class="h-full w-full object-cover" src={"/images/references.png"} alt={"image"} inferSize width={2560} height={1200} />
+        <Picture class="h-full w-full object-cover" src={references} alt={"image"} widths={[1920, 1280, 920, 600]} />
     </div>
 </div>

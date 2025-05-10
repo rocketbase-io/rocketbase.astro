@@ -1,8 +1,7 @@
 ---
 import {getCollection} from "astro:content";
 import SectionWrapper from "../SectionWrapper.astro";
-import {buildImageUrl} from "@lib/directus";
-import {Image} from 'astro:assets';
+import RemoteImage from "@components/RemoteImage.astro";
 
 const references = await getCollection('references');
 const {referenceIds, subtitle} = Astro.props;
@@ -28,10 +27,8 @@ const selected = references.filter(r => referenceIds.includes(r.id))
                                     <div class="flex items-center gap-8 md:flex-row flex-col">
                                         {testimonial?.data.teaser && (
                                                 <div class="w-full lg:w-1/2">
-                                                    <Image src={buildImageUrl(testimonial.data.teaser, 600)}
-                                                           alt={testimonial.data.teaser.title ?? "teaser-image"}
-                                                           inferSize={true} width={testimonial.data.teaser.width ?? 24}
-                                                           height={testimonial.data.teaser.height ?? 24}/>
+                                                    <RemoteImage asset={testimonial.data.teaser} alt={testimonial.data.teaser.title ?? "teaser-image"}
+                                                                 widths={[400, 600, 800]} />
                                                 </div>
                                         )}
                                         <div class="w-full space-y-6 lg:w-1/2">

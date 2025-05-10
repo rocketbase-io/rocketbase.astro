@@ -1,8 +1,7 @@
 ---
 import {marked} from "marked";
-import {Image} from 'astro:assets';
 import SectionWrapper from "../SectionWrapper.astro";
-import {buildImageUrl} from "@lib/directus";
+import RemoteImage from "@components/RemoteImage.astro";
 import {Icon} from "astro-icon/components";
 import type {featureBulletpointType} from "@content/directus";
 import type {directusFileType} from "@content/shared";
@@ -32,7 +31,7 @@ const content = message ? marked.parse(message) : undefined;
         {image &&
             (
                     <div class="shadow rounded-lg border-4 overflow-hidden transition-all duration-500 ease-out hover:scale-105 is-visible">
-                        <Image class="w-full" src={buildImageUrl(image, 1200)} alt={image.title ?? "image"} inferSize={true} />
+                        <RemoteImage class="w-full" asset={image} widths={[1280, 920, 600]} alt={image.title ?? "image"} />
                     </div>
             )
         }

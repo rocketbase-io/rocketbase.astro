@@ -1,6 +1,5 @@
 ---
-import {Image} from 'astro:assets';
-import {buildImageUrl} from "@lib/directus";
+import RemoteImage from "@components/RemoteImage.astro";
 
 const {title, company, image} = Astro.props;
 ---
@@ -9,7 +8,7 @@ const {title, company, image} = Astro.props;
     <div class="relative overflow-hidden h-[30rem]">
         {image && (
                 <div class="absolute inset-0 -z-10 h-full w-full max-h-[50rem]" style="transform: none;">
-                    <Image class="w-full h-full object-cover" src={buildImageUrl(image, 1200)} alt={title} inferSize={true} width={image.width} height={image.height} />
+                    <RemoteImage class="w-full h-full object-cover" asset={image} alt={title} widths={[1280, 920, 600]} />
                 </div>
         )}
         <div class="absolute inset-0 flex flex-col items-center justify-center animate-fade-in-up">

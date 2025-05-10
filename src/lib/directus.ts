@@ -4,7 +4,3 @@ import type {CustomDirectusTypes} from "./directus-types";
 export const directus = createDirectus<CustomDirectusTypes>(import.meta.env.DIRECTUS_URL)
     .with(staticToken(import.meta.env.DIRECTUS_API_KEY))
     .with(rest());
-
-export const buildImageUrl = (asset: { id?: string }, width?: number) => {
-    return import.meta.env.IMGIX_URL + "assets/" + asset.id + (width ? "?w=" + width : "");
-}
